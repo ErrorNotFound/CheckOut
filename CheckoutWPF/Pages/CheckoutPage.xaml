@@ -1,0 +1,147 @@
+﻿<Page x:Class="CheckoutWPF.Pages.CheckoutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:model="clr-namespace:CheckoutWPF.Model"
+      xmlns:helper="clr-namespace:CheckoutWPF.Helper"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CheckoutWPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="718" 
+      d:DesignWidth="1024"
+      Title="CheckoutPage">
+    <Page.DataContext>
+        <local:CheckoutPageViewModel />
+    </Page.DataContext>
+    <Page.Resources>
+        <helper:BindingProxy x:Key="shadowBackgroundProxy" Data="{DynamicResource Color1}" />
+        <helper:ColorToShadowColorConverter x:Key="colorToShadowColorConverter" />
+    </Page.Resources>
+
+    <Grid Background="{DynamicResource BrushColor2}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0"
+              Margin="10"
+              Background="{DynamicResource BrushColor3}">
+            <ItemsControl ItemsSource="{Binding CurrentOrder.Items}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="0 0 0 1"
+                                BorderBrush="Black">
+                            <Grid Height="70">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="120" />
+                                    <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+                            
+                                <TextBlock Text="{Binding ProductName}" 
+                                           TextTrimming="CharacterEllipsis"
+                                           Grid.Column="0"
+                                           FontSize="25"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource BrushColorFontDark}"
+                                           VerticalAlignment="Center"
+                                           Margin="10 0 0 0"/>
+                                <StackPanel Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"
+                                            Orientation="Horizontal">
+                                    <Button Content="+"
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}"
+                                            CommandParameter="{Binding ProductID}"
+                                            Width="40"
+                                            Height="40"
+                                            Margin="0 0 20 0"/>
+                                    <TextBlock Text="{Binding Count, StringFormat={}{0} x}"   
+                                               FontSize="25"
+                                               FontWeight="Bold"
+                                               Foreground="{DynamicResource BrushColorFontDark}" />
+                                    <Button Content="-"
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.RemoveProductCommand}"
+                                            CommandParameter="{Binding ProductID}"
+                                            Width="40"
+                                            Height="40"
+                                            Margin="20 0 0 0"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding SingleValue, StringFormat=á {0} €}"
+                                           Grid.Column="2" 
+                                           FontSize="25"
+                                           Foreground="{DynamicResource BrushColorFontDark}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"/>
+                                <TextBlock Text="{Binding TotalValue, StringFormat={}{0} €}" 
+                                           Grid.Column="3"
+                                           FontSize="25"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource BrushColorFontDark}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           Margin="0 0 20 0"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <TextBlock Text="{Binding CurrentOrder.TotalValue, StringFormat=Total: {0} €}" 
+                       FontSize="35"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource BrushColorFontDark}"
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Right"
+                       Margin="0 0 10 0"/>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <WrapPanel>
+                <Button Content="A" 
+                        Width="100"
+                        Height="100"
+                        Margin="10"
+                        Click="Button_Click_A"/>
+                <Button Content="B" 
+                        Width="100"
+                        Height="100"
+                        Margin="10"
+                        Click="Button_Click_B"/>
+                <Button Content="C" 
+                        Width="100"
+                        Height="100"
+                        Margin="10"
+                        Click="Button_Click_C"/>
+            </WrapPanel>
+        </Grid>
+
+        <Grid Grid.Row="2"
+              Background="{DynamicResource BrushColor1}">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="8" 
+                                  Color="{Binding Source={StaticResource shadowBackgroundProxy}, Path=Data, Converter={StaticResource colorToShadowColorConverter}}"
+                                  Direction="90"
+                                  ShadowDepth="4"
+                                  RenderingBias="Quality"/>
+            </Grid.Effect>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <Button Content="Cancel Order"
+                        Command="{Binding CancelCommand}"
+                        Width="180"
+                        Margin="0 5 10 5"/>
+                <Button Content="Bar"
+                        Command="{Binding BarCommand}"
+                        Width="180"
+                        Margin="0 5 10 5"/>
+                <Button Content="Next Order"
+                        Command="{Binding NextOrderCommand}"
+                        Width="180"
+                        Margin="0 5 10 5"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

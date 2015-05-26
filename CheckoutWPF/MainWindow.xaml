@@ -1,0 +1,115 @@
+﻿<Window x:Class="CheckoutWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:helper="clr-namespace:CheckoutWPF.Helper"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CheckoutWPF"
+        mc:Ignorable="d"
+        Title="Checkout - Alpha" 
+        Height="768" 
+        Width="1024">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="checkboxMenu"
+               TargetType="CheckBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid Background="DarkGray"></Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+        <helper:BindingProxy x:Key="shadowBackgroundProxy" Data="{DynamicResource Color1}" />
+        <helper:ColorToShadowColorConverter x:Key="colorToShadowColorConverter" />
+        <BlurEffect x:Key="blurEffect" Radius="8"/>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+          
+        <!-- Current Page -->
+        <Frame Grid.Row="1"
+               Content="{Binding ActivePage}"
+               NavigationUIVisibility="Hidden">
+            <Frame.Template>
+                <ControlTemplate TargetType="Frame">
+                    <ContentPresenter />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=checkBoxMainMenu, Path=IsChecked}" Value="False">
+                            <Setter Property="Effect" Value="{x:Null}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=checkBoxMainMenu, Path=IsChecked}" Value="True">
+                            <Setter Property="Effect" Value="{StaticResource blurEffect}"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Frame.Template>
+        </Frame>
+        
+        <!-- Header -->
+        <Grid Name="gridHeader" 
+              Background="{DynamicResource BrushColor1}" 
+              Grid.Row="0">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="8" 
+                                  Color="{Binding Source={StaticResource shadowBackgroundProxy}, Path=Data, Converter={StaticResource colorToShadowColorConverter}}"
+                                  Direction="270"
+                                  ShadowDepth="4"
+                                  RenderingBias="Quality"/>
+            </Grid.Effect>
+            <CheckBox Name="checkBoxMainMenu"
+                      Width="40"
+                      Height="40"
+                      Style="{StaticResource checkboxMenu}"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Left"
+                      Margin="20 0 0 0" />
+
+            <TextBlock Text="Checkout"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="{DynamicResource BrushColorFontLight}"
+                       FontSize="22"
+                       FontWeight="Bold"/>
+            <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now},StringFormat='HH:mm:ss tt'}"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 20 0"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource BrushColorFontLight}"/>
+        </Grid>
+
+        <!-- Touch Layer over current page-->
+        <Grid Name="gridActivePageTouchLayer"
+              Grid.Row="1"
+              Background="Transparent"
+              IsHitTestVisible="{Binding ElementName=checkBoxMainMenu, Path=IsChecked}"
+              PreviewMouseDown="gridActivePageTouchLayer_MouseLeftButtonDown"
+              PreviewTouchDown="gridActivePageTouchLayer_TouchDown">
+        </Grid>
+        
+        <!-- Menu -->
+        <Border Grid.Row="1"
+                Width="200"
+                Height="400"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                BorderBrush="{DynamicResource BrushColor1}"
+                BorderThickness="0 0 2 2"
+                Visibility="{Binding ElementName=checkBoxMainMenu, Path=IsChecked, Converter={StaticResource booleanToVisibilityConverter}}">
+            <Grid Background="{DynamicResource BrushColor2}">
+                     
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

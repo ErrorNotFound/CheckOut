@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CheckoutWPF.Resources.Themes">
+    <Color x:Key="Color0">#222222</Color>
+    <Color x:Key="Color1">#333333</Color>
+    <Color x:Key="Color2">#0073A2</Color>
+    <Color x:Key="Color3">#2CA3CE</Color>
+    <Color x:Key="ColorFontLight">#FFFFFF</Color>
+    <Color x:Key="ColorFontDark">#000000</Color>
+    
+    <SolidColorBrush x:Key="BrushColor0" Color="{StaticResource Color0}" />
+    <SolidColorBrush x:Key="BrushColor1" Color="{StaticResource Color1}" />
+    <SolidColorBrush x:Key="BrushColor2" Color="{StaticResource Color2}" />
+    <SolidColorBrush x:Key="BrushColor3" Color="{StaticResource Color3}" />
+    <SolidColorBrush x:Key="BrushColorFontLight" Color="{StaticResource ColorFontLight}" />
+    <SolidColorBrush x:Key="BrushColorFontDark" Color="{StaticResource ColorFontDark}" />
+</ResourceDictionary>
