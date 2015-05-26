@@ -100,17 +100,17 @@
         
         <Grid Grid.Row="1">
             <WrapPanel>
-                <Button Content="A" 
+                <Button Content="Product A" 
                         Width="100"
                         Height="100"
                         Margin="10"
                         Click="Button_Click_A"/>
-                <Button Content="B" 
+                <Button Content="Product B" 
                         Width="100"
                         Height="100"
                         Margin="10"
                         Click="Button_Click_B"/>
-                <Button Content="C" 
+                <Button Content="Product C" 
                         Width="100"
                         Height="100"
                         Margin="10"
