@@ -32,19 +32,25 @@ namespace CheckoutWPF.DataSource
             _products.Add(new Product()
             {
                 ID = 1,
-                Name = "Product A",
+                Name = "Spaghetti",
                 Price = 5.50m
             });
             _products.Add(new Product()
             {
                 ID = 2,
-                Name = "Product B",
+                Name = "Lasagne",
                 Price = 7.20m
             });
             _products.Add(new Product()
             {
                 ID = 3,
-                Name = "Product C",
+                Name = "Pesto",
+                Price = 2.30m
+            });
+            _products.Add(new Product()
+            {
+                ID = 4,
+                Name = "Olivenöl",
                 Price = 2.30m
             });
         }

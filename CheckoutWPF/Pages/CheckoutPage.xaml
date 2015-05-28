@@ -2,6 +2,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:model="clr-namespace:CheckoutWPF.Model"
       xmlns:helper="clr-namespace:CheckoutWPF.Helper"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -16,6 +17,19 @@
     <Page.Resources>
         <helper:BindingProxy x:Key="shadowBackgroundProxy" Data="{DynamicResource Color1}" />
         <helper:ColorToShadowColorConverter x:Key="colorToShadowColorConverter" />
+        
+        <Style x:Key="OrderItemStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="{DynamicResource BrushColorFontDark}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style x:Key="OrderItemHeaderStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="Gray" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
     </Page.Resources>
 
     <Grid Background="{DynamicResource BrushColor2}">
@@ -28,15 +42,78 @@
         <Grid Grid.Row="0"
               Margin="10"
               Background="{DynamicResource BrushColor3}">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="8" 
+                                  Color="{DynamicResource ColorShadow}"
+                                  Direction="270"
+                                  ShadowDepth="2.5"/>
+            </Grid.Effect>
+            
             <ItemsControl ItemsSource="{Binding CurrentOrder.Items}">
+                <ItemsControl.Template>
+                    <ControlTemplate TargetType="ItemsControl">
+                        <DockPanel>
+                            <Border BorderThickness="0 0 0 1"
+                                    BorderBrush="{DynamicResource BrushColor2}"
+                                    Height="60" 
+                                    DockPanel.Dock="Top">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="250" />
+                                        <ColumnDefinition Width="120" />
+                                        <ColumnDefinition Width="150" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0"
+                                           Text="Product"
+                                           Style="{StaticResource OrderItemHeaderStyle}"
+                                           Margin="10 0 0 0"/>
+                                    <TextBlock Grid.Column="1"
+                                           Text="Count"
+                                           Style="{StaticResource OrderItemHeaderStyle}"
+                                           HorizontalAlignment="Left"
+                                           Margin="10 0 0 0"/>
+                                    <TextBlock Grid.Column="2"
+                                           Text="Per Item"
+                                           Style="{StaticResource OrderItemHeaderStyle}"
+                                           HorizontalAlignment="Center"
+                                           Margin="10 0 0 0"/>
+                                    <TextBlock Grid.Column="3"
+                                           Text="Sum"
+                                           Style="{StaticResource OrderItemHeaderStyle}"
+                                           HorizontalAlignment="Center"
+                                           Margin="10 0 0 0"/>
+                                </Grid>
+                            </Border>
+                            <Border BorderThickness="0 1 0 0"
+                                    BorderBrush="{DynamicResource BrushColor2}"
+                                    Height="60" 
+                                    DockPanel.Dock="Bottom">
+                                <TextBlock Text="{Binding CurrentOrder.TotalValue, StringFormat=Total: {0} €}" 
+                                           FontSize="30"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource BrushColorFontDark}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           Margin="0 0 10 0"/>
+                            </Border>
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden"
+                                          HorizontalScrollBarVisibility="Disabled"
+                                          Margin="0 0 0 5">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </DockPanel>
+                    </ControlTemplate>
+                </ItemsControl.Template>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="0 0 0 1"
-                                BorderBrush="Black">
-                            <Grid Height="70">
+                        <Border BorderThickness="0 0 0 0"
+                                BorderBrush="{DynamicResource BrushColor2}">
+                            <Grid Height="60">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="250" />
                                     <ColumnDefinition Width="120" />
                                     <ColumnDefinition Width="150" />
                                 </Grid.ColumnDefinitions>
@@ -44,14 +121,11 @@
                                 <TextBlock Text="{Binding ProductName}" 
                                            TextTrimming="CharacterEllipsis"
                                            Grid.Column="0"
-                                           FontSize="25"
-                                           FontWeight="Bold"
-                                           Foreground="{DynamicResource BrushColorFontDark}"
-                                           VerticalAlignment="Center"
+                                           Style="{StaticResource OrderItemStyle}"
                                            Margin="10 0 0 0"/>
                                 <StackPanel Grid.Column="1"
                                             VerticalAlignment="Center"
-                                            HorizontalAlignment="Center"
+                                            HorizontalAlignment="Left"
                                             Orientation="Horizontal">
                                     <Button Content="+"
                                             Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}"
@@ -60,9 +134,10 @@
                                             Height="40"
                                             Margin="0 0 20 0"/>
                                     <TextBlock Text="{Binding Count, StringFormat={}{0} x}"   
-                                               FontSize="25"
-                                               FontWeight="Bold"
-                                               Foreground="{DynamicResource BrushColorFontDark}" />
+                                               Style="{StaticResource OrderItemStyle}"
+                                               HorizontalAlignment="Center"
+                                               TextAlignment="Center"
+                                               Width="30"/>
                                     <Button Content="-"
                                             Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.RemoveProductCommand}"
                                             CommandParameter="{Binding ProductID}"
@@ -72,16 +147,12 @@
                                 </StackPanel>
                                 <TextBlock Text="{Binding SingleValue, StringFormat=á {0} €}"
                                            Grid.Column="2" 
-                                           FontSize="25"
-                                           Foreground="{DynamicResource BrushColorFontDark}"
-                                           VerticalAlignment="Center"
+                                           Style="{StaticResource OrderItemStyle}"
+                                           FontWeight="Normal"
                                            HorizontalAlignment="Right"/>
                                 <TextBlock Text="{Binding TotalValue, StringFormat={}{0} €}" 
                                            Grid.Column="3"
-                                           FontSize="25"
-                                           FontWeight="Bold"
-                                           Foreground="{DynamicResource BrushColorFontDark}"
-                                           VerticalAlignment="Center"
+                                           Style="{StaticResource OrderItemStyle}"
                                            HorizontalAlignment="Right"
                                            Margin="0 0 20 0"/>
                             </Grid>
@@ -89,13 +160,6 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <TextBlock Text="{Binding CurrentOrder.TotalValue, StringFormat=Total: {0} €}" 
-                       FontSize="35"
-                       FontWeight="Bold"
-                       Foreground="{DynamicResource BrushColorFontDark}"
-                       VerticalAlignment="Bottom"
-                       HorizontalAlignment="Right"
-                       Margin="0 0 10 0"/>
         </Grid>
         
         <Grid Grid.Row="1">
@@ -104,17 +168,38 @@
                         Width="100"
                         Height="100"
                         Margin="10"
-                        Click="Button_Click_A"/>
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                    <Button.CommandParameter>
+                        <sys:Int32>1</sys:Int32>
+                    </Button.CommandParameter>
+                </Button>
                 <Button Content="Product B" 
                         Width="100"
                         Height="100"
                         Margin="10"
-                        Click="Button_Click_B"/>
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                    <Button.CommandParameter>
+                        <sys:Int32>2</sys:Int32>
+                    </Button.CommandParameter>
+                </Button>
                 <Button Content="Product C" 
                         Width="100"
                         Height="100"
                         Margin="10"
-                        Click="Button_Click_C"/>
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                    <Button.CommandParameter>
+                        <sys:Int32>3</sys:Int32>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Content="Product C" 
+                        Width="100"
+                        Height="100"
+                        Margin="10"
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                    <Button.CommandParameter>
+                        <sys:Int32>4</sys:Int32>
+                    </Button.CommandParameter>
+                </Button>
             </WrapPanel>
         </Grid>
 
@@ -122,10 +207,9 @@
               Background="{DynamicResource BrushColor1}">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="8" 
-                                  Color="{Binding Source={StaticResource shadowBackgroundProxy}, Path=Data, Converter={StaticResource colorToShadowColorConverter}}"
+                                  Color="{DynamicResource ColorShadow}"
                                   Direction="90"
-                                  ShadowDepth="4"
-                                  RenderingBias="Quality"/>
+                                  ShadowDepth="1"/>
             </Grid.Effect>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">

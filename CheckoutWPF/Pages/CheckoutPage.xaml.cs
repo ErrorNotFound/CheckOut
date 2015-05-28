@@ -24,20 +24,5 @@ namespace CheckoutWPF.Pages
         {
             InitializeComponent();
         }
-
-        private void Button_Click_A(object sender, RoutedEventArgs e)
-        {
-            ((CheckoutPageViewModel)DataContext).AddProductCommand.Execute(1);
-        }
-
-        private void Button_Click_B(object sender, RoutedEventArgs e)
-        {
-            ((CheckoutPageViewModel)DataContext).AddProductCommand.Execute(2);
-        }
-
-        private void Button_Click_C(object sender, RoutedEventArgs e)
-        {
-            ((CheckoutPageViewModel)DataContext).AddProductCommand.Execute(3);
-        }
     }
 }

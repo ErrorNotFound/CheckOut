@@ -61,10 +61,9 @@
               Grid.Row="0">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="8" 
-                                  Color="{Binding Source={StaticResource shadowBackgroundProxy}, Path=Data, Converter={StaticResource colorToShadowColorConverter}}"
+                                  Color="{DynamicResource ColorShadow}"
                                   Direction="270"
-                                  ShadowDepth="4"
-                                  RenderingBias="Quality"/>
+                                  ShadowDepth="1"/>
             </Grid.Effect>
             <CheckBox Name="checkBoxMainMenu"
                       Width="40"
