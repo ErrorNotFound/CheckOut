@@ -30,6 +30,27 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
+        
+        <Style x:Key="AddButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Image Source="/CheckoutWPF;component/Resources/Icons/ic_add_black_48dp_1x.png"
+                               Stretch="Uniform"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="RemoveButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Image Source="/CheckoutWPF;component/Resources/Icons/ic_remove_black_48dp_1x.png"
+                               Stretch="Uniform"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
     <Grid Background="{DynamicResource BrushColor2}">
@@ -127,22 +148,22 @@
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Left"
                                             Orientation="Horizontal">
-                                    <Button Content="+"
-                                            Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}"
+                                    <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}"
                                             CommandParameter="{Binding ProductID}"
-                                            Width="40"
-                                            Height="40"
+                                            Style="{StaticResource AddButtonStyle}"
+                                            Width="30"
+                                            Height="30"
                                             Margin="0 0 20 0"/>
                                     <TextBlock Text="{Binding Count, StringFormat={}{0} x}"   
                                                Style="{StaticResource OrderItemStyle}"
                                                HorizontalAlignment="Center"
                                                TextAlignment="Center"
                                                Width="30"/>
-                                    <Button Content="-"
-                                            Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.RemoveProductCommand}"
+                                    <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.RemoveProductCommand}"
                                             CommandParameter="{Binding ProductID}"
-                                            Width="40"
-                                            Height="40"
+                                            Style="{StaticResource RemoveButtonStyle}"
+                                            Width="30"
+                                            Height="30"
                                             Margin="20 0 0 0"/>
                                 </StackPanel>
                                 <TextBlock Text="{Binding SingleValue, StringFormat=á {0} €}"
