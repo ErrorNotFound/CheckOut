@@ -154,7 +154,7 @@
                                             Style="{StaticResource AddButtonStyle}"
                                             Width="30"
                                             Height="30"
-                                            Margin="0 0 20 0"/>
+                                            Margin="0 0 10 0"/>
                                     <TextBlock Text="{Binding Count, StringFormat={}{0} x}"   
                                                Style="{StaticResource OrderItemStyle}"
                                                HorizontalAlignment="Center"
@@ -165,7 +165,7 @@
                                             Style="{StaticResource RemoveButtonStyle}"
                                             Width="30"
                                             Height="30"
-                                            Margin="20 0 0 0"/>
+                                            Margin="10 0 0 0"/>
                                 </StackPanel>
                                 <TextBlock Text="{Binding SingleValue, StringFormat=á {0} €}"
                                            Grid.Column="2" 

@@ -18,7 +18,7 @@
                TargetType="CheckBox">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
+                    <ControlTemplate TargetType="CheckBox">
                         <Image Source="Resources/Icons/ic_menu_white_48dp_1x.png"
                                Height="48"
                                Width="48"
@@ -31,15 +31,25 @@
                TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
-                        <Border Height="50"
-                                BorderThickness="0 0 0 1"
-                                BorderBrush="{DynamicResource BrushColor1}">
-                            <ContentPresenter />
-                        </Border>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Height="60">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       FontWeight="Medium"
+                                       VerticalAlignment="Center"
+                                       Grid.Column="1"/>
+                        </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+        <Style x:Key="MenuItemSeparatorStyle"
+               TargetType="Separator">
+            <Setter Property="Background" Value="{DynamicResource BrushColorShadow}" />
         </Style>
         <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
         <helper:BindingProxy x:Key="shadowBackgroundProxy" Data="{DynamicResource Color1}" />
@@ -126,8 +136,13 @@
                                   ShadowDepth="1"/>
             </Border.Effect>
             <StackPanel Background="{DynamicResource BrushColor2}">
-                <Button Content="Checking"
+                <Button Content="Checkout" 
+                        Style="{StaticResource MenuItemButtonStyle}" />
+                <Button Content="My Products"
                         Style="{StaticResource MenuItemButtonStyle}"/>
+                <Button Content="Order History"
+                        Style="{StaticResource MenuItemButtonStyle}"/>
+                <Separator Style="{StaticResource MenuItemSeparatorStyle}" />
                 <Button Content="Settings"
                         Style="{StaticResource MenuItemButtonStyle}"/>
             </StackPanel>
