@@ -34,12 +34,18 @@
                     <ControlTemplate TargetType="Button">
                         <Grid Height="60">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="70" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
+                            
+                            <ContentPresenter Grid.Column="0"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Margin="18"/>
 
-                            <TextBlock Text="{TemplateBinding Content}"
+                            <TextBlock Text="{TemplateBinding Tag}"
                                        FontWeight="Medium"
+                                       FontSize="12"
                                        VerticalAlignment="Center"
                                        Grid.Column="1"/>
                         </Grid>
@@ -136,15 +142,27 @@
                                   ShadowDepth="1"/>
             </Border.Effect>
             <StackPanel Background="{DynamicResource BrushColor2}">
-                <Button Content="Checkout" 
-                        Style="{StaticResource MenuItemButtonStyle}" />
-                <Button Content="My Products"
-                        Style="{StaticResource MenuItemButtonStyle}"/>
-                <Button Content="Order History"
-                        Style="{StaticResource MenuItemButtonStyle}"/>
+                <Button Tag="Checkout"
+                        Style="{StaticResource MenuItemButtonStyle}">
+                    <Image Source="/CheckoutWPF;component/Resources/Icons/ic_store_black_48dp_1x.png"
+                           Stretch="Uniform"/>
+                </Button>
+                <Button Tag="My Products"
+                        Style="{StaticResource MenuItemButtonStyle}">
+                    <Image Source="/CheckoutWPF;component/Resources/Icons/ic_restaurant_menu_black_48dp_1x.png"
+                           Stretch="Uniform"/>
+                </Button>
+                <Button Tag="Order History"
+                        Style="{StaticResource MenuItemButtonStyle}">
+                    <Image Source="/CheckoutWPF;component/Resources/Icons/ic_storage_black_48dp_1x.png"
+                           Stretch="Uniform"/>
+                </Button>
                 <Separator Style="{StaticResource MenuItemSeparatorStyle}" />
-                <Button Content="Settings"
-                        Style="{StaticResource MenuItemButtonStyle}"/>
+                <Button Tag="Settings"
+                        Style="{StaticResource MenuItemButtonStyle}">
+                    <Image Source="/CheckoutWPF;component/Resources/Icons/ic_settings_black_48dp_1x.png"
+                           Stretch="Uniform"/>
+                </Button>
             </StackPanel>
         </Border>
     </Grid>

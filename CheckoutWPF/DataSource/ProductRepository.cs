@@ -53,6 +53,24 @@ namespace CheckoutWPF.DataSource
                 Name = "Olivenöl",
                 Price = 2.30m
             });
+            _products.Add(new Product()
+            {
+                ID = 5,
+                Name = "Reis",
+                Price = 1.50m
+            });
+            _products.Add(new Product()
+            {
+                ID = 6,
+                Name = "Kloß mit Soß",
+                Price = 2.00m
+            });
+            _products.Add(new Product()
+            {
+                ID = 7,
+                Name = "Schweinshaxe",
+                Price = 8.50m
+            });
         }
 
         public static bool TryGetProductById(int id, out Product product)

@@ -22,7 +22,7 @@
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Foreground" Value="{DynamicResource BrushColorFontDark}" />
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontWeight" Value="Medium" />
         </Style>
         <Style x:Key="OrderItemHeaderStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />
@@ -213,13 +213,40 @@
                         <sys:Int32>3</sys:Int32>
                     </Button.CommandParameter>
                 </Button>
-                <Button Content="Product C" 
+                <Button Content="Product D" 
                         Width="100"
                         Height="100"
                         Margin="10"
                         Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
                     <Button.CommandParameter>
                         <sys:Int32>4</sys:Int32>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Content="Product E" 
+                        Width="100"
+                        Height="100"
+                        Margin="10"
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                    <Button.CommandParameter>
+                        <sys:Int32>5</sys:Int32>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Content="Product F" 
+                        Width="100"
+                        Height="100"
+                        Margin="10"
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                    <Button.CommandParameter>
+                        <sys:Int32>6</sys:Int32>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Content="Product G" 
+                        Width="100"
+                        Height="100"
+                        Margin="10"
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                    <Button.CommandParameter>
+                        <sys:Int32>7</sys:Int32>
                     </Button.CommandParameter>
                 </Button>
             </WrapPanel>
