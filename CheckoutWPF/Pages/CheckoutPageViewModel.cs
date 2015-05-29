@@ -61,20 +61,20 @@ namespace CheckoutWPF.Pages
             }
         }
 
-        private RelayCommand<object> _cancelCommand;
-        public RelayCommand<object> CancelCommand
+        private RelayCommand<object> _clearCommand;
+        public RelayCommand<object> ClearCommand
         {
             get
             {
-                if (_cancelCommand == null)
+                if (_clearCommand == null)
                 {
-                    _cancelCommand = new RelayCommand<object>((param) => Cancel());
+                    _clearCommand = new RelayCommand<object>((param) => Cancel());
                 }
-                return _cancelCommand;
+                return _clearCommand;
             }
             set
             {
-                _cancelCommand = value;
+                _clearCommand = value;
             }
         }
 

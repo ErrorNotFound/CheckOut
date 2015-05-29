@@ -28,7 +28,7 @@
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Foreground" Value="Gray" />
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontWeight" Value="Medium" />
         </Style>
         
         <Style x:Key="AddButtonStyle" TargetType="Button">
@@ -167,10 +167,9 @@
                                             Height="30"
                                             Margin="10 0 0 0"/>
                                 </StackPanel>
-                                <TextBlock Text="{Binding SingleValue, StringFormat=á {0} €}"
+                                <TextBlock Text="{Binding SingleValue, StringFormat={}{0} €}"
                                            Grid.Column="2" 
                                            Style="{StaticResource OrderItemStyle}"
-                                           FontWeight="Normal"
                                            HorizontalAlignment="Right"/>
                                 <TextBlock Text="{Binding TotalValue, StringFormat={}{0} €}" 
                                            Grid.Column="3"
@@ -262,8 +261,8 @@
             </Grid.Effect>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">
-                <Button Content="Cancel Order"
-                        Command="{Binding CancelCommand}"
+                <Button Content="Clear Order"
+                        Command="{Binding ClearCommand}"
                         Style="{DynamicResource ButtonRaisedStyle}"
                         Foreground="{DynamicResource BrushColor3}"
                         Background="{DynamicResource BrushHighlightColor1}"
