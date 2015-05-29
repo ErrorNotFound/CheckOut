@@ -80,6 +80,8 @@ namespace CheckoutWPF.Model
             if (e.OldItems != null)
                 foreach (OrderItem item in e.OldItems)
                     item.PropertyChanged -= OrderItem_PropertyChanged;
+
+            OnPropertyChanged(nameof(TotalValue));
         }
 
         private void OrderItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
