@@ -19,7 +19,10 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
-                        <Grid Background="DarkGray"></Grid>
+                        <Image Source="Resources/Icons/ic_menu_white_48dp_1x.png"
+                               Height="48"
+                               Width="48"
+                               Stretch="None"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -80,12 +83,10 @@
                                   ShadowDepth="1"/>
             </Grid.Effect>
             <CheckBox Name="checkBoxMainMenu"
-                      Width="40"
-                      Height="40"
                       Style="{StaticResource MenuCheckboxStyle}"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Left"
-                      Margin="20 0 0 0" />
+                      Margin="10 0 0 0" />
 
             <TextBlock Text="Checkout"
                        HorizontalAlignment="Center"

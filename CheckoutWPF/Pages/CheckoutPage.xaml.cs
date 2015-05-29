@@ -24,5 +24,19 @@ namespace CheckoutWPF.Pages
         {
             InitializeComponent();
         }
+
+        private void CurrentOrderItemsPresenter_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if(sender is ItemsPresenter)
+            {
+                var ip = (ItemsPresenter)sender;
+
+                if(ip.Parent is ScrollViewer)
+                {
+                    var sv = (ScrollViewer)ip.Parent;
+                    sv.ScrollToBottom();
+                }
+            }
+        }
     }
 }

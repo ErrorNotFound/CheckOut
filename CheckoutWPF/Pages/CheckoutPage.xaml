@@ -119,10 +119,11 @@
                                            HorizontalAlignment="Right"
                                            Margin="0 0 10 0"/>
                             </Border>
-                            <ScrollViewer VerticalScrollBarVisibility="Hidden"
+                            <ScrollViewer x:Name="ScrollViewerCurrentOrder"
+                                          VerticalScrollBarVisibility="Visible"
                                           HorizontalScrollBarVisibility="Disabled"
-                                          Margin="0 0 0 5">
-                                <ItemsPresenter />
+                                          Margin="0 0 0 5">                                
+                                <ItemsPresenter SizeChanged="CurrentOrderItemsPresenter_SizeChanged" />
                             </ScrollViewer>
                         </DockPanel>
                     </ControlTemplate>
