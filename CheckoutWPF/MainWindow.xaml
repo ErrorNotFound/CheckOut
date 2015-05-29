@@ -14,12 +14,26 @@
         <local:MainWindowViewModel />
     </Window.DataContext>
     <Window.Resources>
-        <Style x:Key="checkboxMenu"
+        <Style x:Key="MenuCheckboxStyle"
                TargetType="CheckBox">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
                         <Grid Background="DarkGray"></Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MenuItemButtonStyle"
+               TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border Height="50"
+                                BorderThickness="0 0 0 1"
+                                BorderBrush="{DynamicResource BrushColor1}">
+                            <ContentPresenter />
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -68,7 +82,7 @@
             <CheckBox Name="checkBoxMainMenu"
                       Width="40"
                       Height="40"
-                      Style="{StaticResource checkboxMenu}"
+                      Style="{StaticResource MenuCheckboxStyle}"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Left"
                       Margin="20 0 0 0" />
@@ -100,7 +114,7 @@
         <!-- Menu -->
         <Border Grid.Row="1"
                 Width="200"
-                Height="400"
+                Height="Auto"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
                 Visibility="{Binding ElementName=checkBoxMainMenu, Path=IsChecked, Converter={StaticResource booleanToVisibilityConverter}}">
@@ -110,9 +124,12 @@
                                   Direction="270"
                                   ShadowDepth="1"/>
             </Border.Effect>
-            <Grid Background="{DynamicResource BrushColor2}">
-                     
-            </Grid>
+            <StackPanel Background="{DynamicResource BrushColor2}">
+                <Button Content="Checking"
+                        Style="{StaticResource MenuItemButtonStyle}"/>
+                <Button Content="Settings"
+                        Style="{StaticResource MenuItemButtonStyle}"/>
+            </StackPanel>
         </Border>
     </Grid>
 </Window>
