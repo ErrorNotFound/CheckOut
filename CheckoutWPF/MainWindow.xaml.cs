@@ -44,5 +44,10 @@ namespace CheckoutWPF
         {
             CloseMenuIfOpen(e);
         }
+
+        private void CloseMenu(object sender, RoutedEventArgs e)
+        {
+            CloseMenuIfOpen(e);
+        }
     }
 }

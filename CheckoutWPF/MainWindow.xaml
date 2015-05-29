@@ -1,6 +1,7 @@
 ﻿<Window x:Class="CheckoutWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:helper="clr-namespace:CheckoutWPF.Helper"
+        xmlns:pages="clr-namespace:CheckoutWPF.Pages"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -27,7 +28,9 @@
         </Style>
         <Style x:Key="MenuItemButtonStyle"
                TargetType="Button">
+            <EventSetter Event="Click" Handler="CloseMenu" />
             <Setter Property="Background" Value="{DynamicResource BrushColor2}" />
+            <Setter Property="Command" Value="{Binding ChangePageCommand}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -57,15 +60,16 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="{DynamicResource BrushColor3}" />
                 </Trigger>
-            </Style.Triggers>
+            </Style.Triggers>        
         </Style>
         <Style x:Key="MenuItemSeparatorStyle"
                TargetType="Separator">
             <Setter Property="Background" Value="{DynamicResource BrushColorShadow}" />
         </Style>
+        
         <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
-        <helper:BindingProxy x:Key="shadowBackgroundProxy" Data="{DynamicResource Color1}" />
         <helper:ColorToShadowColorConverter x:Key="colorToShadowColorConverter" />
+        <helper:BindingProxy x:Key="shadowBackgroundProxy" Data="{DynamicResource Color1}" />
         <BlurEffect x:Key="blurEffect" Radius="8"/>
     </Window.Resources>
     
@@ -151,23 +155,27 @@
             </Border.Effect>
             <StackPanel Background="{DynamicResource BrushColor2}">
                 <Button Tag="Checkout"
-                        Style="{StaticResource MenuItemButtonStyle}">
+                        Style="{StaticResource MenuItemButtonStyle}"
+                        CommandParameter="{x:Type pages:CheckoutPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_store_black_48dp_1x.png"
                            Stretch="Uniform"/>
                 </Button>
                 <Button Tag="My Products"
-                        Style="{StaticResource MenuItemButtonStyle}">
+                        Style="{StaticResource MenuItemButtonStyle}"
+                        CommandParameter="{x:Type pages:MyProductsPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_restaurant_menu_black_48dp_1x.png"
                            Stretch="Uniform"/>
                 </Button>
                 <Button Tag="Order History"
-                        Style="{StaticResource MenuItemButtonStyle}">
+                        Style="{StaticResource MenuItemButtonStyle}"
+                        CommandParameter="{x:Type pages:OrderHistoryPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_storage_black_48dp_1x.png"
                            Stretch="Uniform"/>
                 </Button>
                 <Separator Style="{StaticResource MenuItemSeparatorStyle}" />
                 <Button Tag="Settings"
-                        Style="{StaticResource MenuItemButtonStyle}">
+                        Style="{StaticResource MenuItemButtonStyle}"
+                        CommandParameter="{x:Type pages:SettingsPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_settings_black_48dp_1x.png"
                            Stretch="Uniform"/>
                 </Button>

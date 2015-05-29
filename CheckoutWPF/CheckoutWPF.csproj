@@ -77,6 +77,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MyProductsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OrderHistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Styles\ButtonStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,6 +115,18 @@
       <DependentUpon>CheckoutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CheckoutPageViewModel.cs" />
+    <Compile Include="Pages\MyProductsPage.xaml.cs">
+      <DependentUpon>MyProductsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyProductsPageViewModel.cs" />
+    <Compile Include="Pages\OrderHistoryPage.xaml.cs">
+      <DependentUpon>OrderHistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OrderHistoryPageViewModel.cs" />
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingsPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
