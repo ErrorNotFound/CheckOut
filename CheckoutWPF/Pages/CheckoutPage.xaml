@@ -264,14 +264,23 @@
                         HorizontalAlignment="Right">
                 <Button Content="Cancel Order"
                         Command="{Binding CancelCommand}"
+                        Style="{DynamicResource ButtonRaisedStyle}"
+                        Foreground="{DynamicResource BrushColor3}"
+                        Background="{DynamicResource BrushHighlightColor1}"
                         Width="180"
                         Margin="0 5 10 5"/>
                 <Button Content="Bar"
                         Command="{Binding BarCommand}"
+                        Style="{DynamicResource ButtonRaisedStyle}"
+                        Foreground="{DynamicResource BrushColor3}"
+                        Background="{DynamicResource BrushHighlightColor0}"
                         Width="180"
                         Margin="0 5 10 5"/>
                 <Button Content="Next Order"
                         Command="{Binding NextOrderCommand}"
+                        Style="{DynamicResource ButtonRaisedStyle}"
+                        Foreground="{DynamicResource BrushColor3}"
+                        Background="{DynamicResource BrushHighlightColor0}"
                         Width="180"
                         Margin="0 5 10 5"/>
             </StackPanel>

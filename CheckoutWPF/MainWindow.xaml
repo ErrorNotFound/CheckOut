@@ -20,19 +20,20 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="CheckBox">
                         <Image Source="Resources/Icons/ic_menu_white_48dp_1x.png"
-                               Height="48"
-                               Width="48"
-                               Stretch="None"/>
+                               Stretch="UniformToFill"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
         <Style x:Key="MenuItemButtonStyle"
                TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource BrushColor2}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid Height="60">
+                        <Grid Name="gridMain" 
+                              Height="60" 
+                              Background="{TemplateBinding Background}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="70" />
                                 <ColumnDefinition Width="*" />
@@ -52,6 +53,11 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BrushColor3}" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style x:Key="MenuItemSeparatorStyle"
                TargetType="Separator">
@@ -102,6 +108,8 @@
                       Style="{StaticResource MenuCheckboxStyle}"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Left"
+                      Height="40"
+                      Width="40"
                       Margin="10 0 0 0" />
 
             <TextBlock Text="Checkout"
