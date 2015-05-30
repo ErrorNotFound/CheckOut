@@ -243,7 +243,7 @@
                 </TabControl.ItemTemplate>
                 <TabControl.ContentTemplate>
                     <DataTemplate>
-                        <ItemsControl Background="{DynamicResource BrushColor4}">
+                        <ItemsControl Background="{DynamicResource BrushColor3}">
                             <ItemsControl.ItemsSource>
                                 <MultiBinding Converter="{StaticResource observableListToCollectionViewConverter}" Mode="OneWay">
                                     <Binding Source="{x:Static data:ProductRepository.Instance}" Path="Products" />
@@ -272,7 +272,7 @@
         </Grid>
 
         <Grid Grid.Row="2"
-              Background="{DynamicResource BrushColor1}">
+              Background="{DynamicResource BrushColor2}">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="8" 
                                   Color="{DynamicResource ColorShadow}"

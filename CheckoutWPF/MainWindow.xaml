@@ -21,7 +21,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="CheckBox">
-                        <Image Source="Resources/Icons/ic_menu_white_48dp_1x.png"
+                        <Image Source="Resources/Icons/ic_menu_black_48dp_1x.png"
                                Stretch="UniformToFill"/>
                     </ControlTemplate>
                 </Setter.Value>
@@ -71,10 +71,10 @@
         <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
         <converter:ColorToShadowColorConverter x:Key="colorToShadowColorConverter" />
         <helper:BindingProxy x:Key="shadowBackgroundProxy" Data="{DynamicResource Color1}" />
-        <BlurEffect x:Key="blurEffect" Radius="8"/>
+        <BlurEffect x:Key="blurEffect" Radius="0"/>
     </Window.Resources>
-    
-    <Grid>
+
+    <Grid Background="{DynamicResource BrushColor2}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
@@ -101,14 +101,15 @@
         
         <!-- Header -->
         <Grid Name="gridHeader" 
-              Background="{DynamicResource BrushColor1}" 
               Grid.Row="0">
+            <!--
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="8" 
                                   Color="{DynamicResource ColorShadow}"
                                   Direction="270"
                                   ShadowDepth="1"/>
             </Grid.Effect>
+            -->
             <CheckBox Name="checkBoxMainMenu"
                       Style="{StaticResource MenuCheckboxStyle}"
                       VerticalAlignment="Center"
@@ -120,7 +121,7 @@
             <TextBlock Text="{DynamicResource MainWindow_ApplicationName}"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Foreground="{DynamicResource BrushColorFontLight}"
+                       Foreground="{DynamicResource BrushColorFontDark}"
                        FontSize="22"
                        FontWeight="Bold"/>
             <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now},StringFormat='HH:mm:ss tt'}"
@@ -129,7 +130,7 @@
                        Margin="0 0 20 0"
                        FontSize="22"
                        FontWeight="Bold"
-                       Foreground="{DynamicResource BrushColorFontLight}"/>
+                       Foreground="{DynamicResource BrushColorFontDark}"/>
         </Grid>
 
         <!-- Touch Layer over complete screen-->
