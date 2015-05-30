@@ -5,6 +5,7 @@
     <Color x:Key="Color1">#1E243E</Color>
     <Color x:Key="Color2">#CDD7F2</Color>
     <Color x:Key="Color3">#E5ECFF</Color>
+    <Color x:Key="Color4">#EEEEEE</Color>
     <Color x:Key="HighlightColor0">#4CAF50</Color>
     <Color x:Key="HighlightColor1">#F44336</Color>
     <Color x:Key="ColorFontLight">#FFFFFF</Color>
@@ -15,6 +16,7 @@
     <SolidColorBrush x:Key="BrushColor1" Color="{StaticResource Color1}" />
     <SolidColorBrush x:Key="BrushColor2" Color="{StaticResource Color2}" />
     <SolidColorBrush x:Key="BrushColor3" Color="{StaticResource Color3}" />
+    <SolidColorBrush x:Key="BrushColor4" Color="{StaticResource Color4}" />
     <SolidColorBrush x:Key="BrushHighlightColor0" Color="{StaticResource HighlightColor0}" />
     <SolidColorBrush x:Key="BrushHighlightColor1" Color="{StaticResource HighlightColor1}" />
     <SolidColorBrush x:Key="BrushColorFontLight" Color="{StaticResource ColorFontLight}" />

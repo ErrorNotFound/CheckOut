@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace CheckoutWPF.Helper
+namespace CheckoutWPF.Pages.Converter
 {
     public class ColorToShadowColorConverter : IValueConverter
     {

@@ -67,7 +67,7 @@
     <Compile Include="DataSource\OrderBacklog.cs" />
     <Compile Include="DataSource\ProductRepository.cs" />
     <Compile Include="Helper\BindingProxy.cs" />
-    <Compile Include="Helper\ColorToShadowColorConverter.cs" />
+    <Compile Include="Pages\Converter\ColorToShadowColorConverter.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -98,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\ScrollViewerStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\TabControlStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
