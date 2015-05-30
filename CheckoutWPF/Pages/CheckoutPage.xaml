@@ -1,6 +1,7 @@
 ﻿<Page x:Class="CheckoutWPF.Pages.CheckoutPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:model="clr-namespace:CheckoutWPF.Model"
+      xmlns:data="clr-namespace:CheckoutWPF.DataSource"
       xmlns:helper="clr-namespace:CheckoutWPF.Helper"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -41,7 +42,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="RemoveButtonStyle" TargetType="Button">
+        <Style x:Key="RemoveButtonStyle" TargetType="Button">            
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -51,11 +52,38 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="TileStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{DynamicResource BrushColor3}"
+                              Width="100"
+                              Height="100"
+                              Margin="10">
+                            <Grid.Effect>
+                                <DropShadowEffect BlurRadius="8" 
+                                  Color="{DynamicResource ColorShadow}"
+                                  Direction="270"
+                                  ShadowDepth="2.5"/>
+                            </Grid.Effect>
+                            <TextBlock Text="{TemplateBinding Tag}"
+                                       TextWrapping="Wrap"
+                                       TextTrimming="CharacterEllipsis"
+                                       TextAlignment="Center"
+                                       FontSize="14"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
     <Grid Background="{DynamicResource BrushColor2}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="350" />
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
@@ -190,66 +218,62 @@
         </Grid>
         
         <Grid Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Products}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Tag="{Binding Name}"
+                                Style="{StaticResource TileStyle}"
+                                Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}"
+                                CommandParameter="{Binding ID}">
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <!-- 
             <WrapPanel>
-                <Button Content="Product A" 
-                        Width="100"
-                        Height="100"
-                        Margin="10"
-                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                <Button Tag="Product A" 
+                        Style="{StaticResource TileStyle}">
                     <Button.CommandParameter>
                         <sys:Int32>1</sys:Int32>
                     </Button.CommandParameter>
                 </Button>
-                <Button Content="Product B" 
-                        Width="100"
-                        Height="100"
-                        Margin="10"
-                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                <Button Tag="Product B" 
+                        Style="{StaticResource TileStyle}">
                     <Button.CommandParameter>
                         <sys:Int32>2</sys:Int32>
                     </Button.CommandParameter>
                 </Button>
-                <Button Content="Product C" 
-                        Width="100"
-                        Height="100"
-                        Margin="10"
-                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                <Button Tag="Product C" 
+                        Style="{StaticResource TileStyle}">
                     <Button.CommandParameter>
                         <sys:Int32>3</sys:Int32>
                     </Button.CommandParameter>
                 </Button>
-                <Button Content="Product D" 
-                        Width="100"
-                        Height="100"
-                        Margin="10"
-                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                <Button Tag="Product D" 
+                        Style="{StaticResource TileStyle}">
                     <Button.CommandParameter>
                         <sys:Int32>4</sys:Int32>
                     </Button.CommandParameter>
                 </Button>
-                <Button Content="Product E" 
-                        Width="100"
-                        Height="100"
-                        Margin="10"
-                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                <Button Tag="Product E" 
+                        Style="{StaticResource TileStyle}">
                     <Button.CommandParameter>
                         <sys:Int32>5</sys:Int32>
                     </Button.CommandParameter>
                 </Button>
-                <Button Content="Product F" 
-                        Width="100"
-                        Height="100"
-                        Margin="10"
-                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                <Button Tag="Product F" 
+                        Style="{StaticResource TileStyle}">
                     <Button.CommandParameter>
                         <sys:Int32>6</sys:Int32>
                     </Button.CommandParameter>
                 </Button>
-                <Button Content="Product G" 
-                        Width="100"
-                        Height="100"
-                        Margin="10"
-                        Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}">
+                <Button Tag="Product G" 
+                        Style="{StaticResource TileStyle}">
                     <Button.CommandParameter>
                         <sys:Int32>7</sys:Int32>
                     </Button.CommandParameter>
@@ -257,6 +281,7 @@
                 
                 <TextBlock Text="{DynamicResource Test}" />
             </WrapPanel>
+            -->
         </Grid>
 
         <Grid Grid.Row="2"

@@ -1,6 +1,8 @@
-﻿using CheckoutWPF.Model;
+﻿using CheckoutWPF.Abstract;
+using CheckoutWPF.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,18 +19,36 @@ namespace CheckoutWPF.DataSource
         }
     }
 
-    public class ProductRepository
+    public class ProductRepository : AbstractModel
     {
-        private static List<Product> _products;
+        private ObservableCollection<Product> _products;
+        public ObservableCollection<Product> Products
+        {
+            get
+            {
+                return _products;
+            }
+            set
+            {
+                if (value == _products)
+                    return;
 
-        static ProductRepository()
+                _products = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ProductRepository()
         {
             GenerateProducts();
         }
 
-        private static void GenerateProducts()
+        private static ProductRepository _instance;
+        public static ProductRepository Instance { get { return _instance ?? (_instance = new ProductRepository()); } }
+
+        private void GenerateProducts()
         {
-            _products = new List<Product>();
+            _products = new ObservableCollection<Product>();
             _products.Add(new Product()
             {
                 ID = 1,
@@ -71,16 +91,55 @@ namespace CheckoutWPF.DataSource
                 Name = "Schweinshaxe",
                 Price = 8.50m
             });
+            _products.Add(new Product()
+            {
+                ID = 8,
+                Name = "Ein Product mit ganz langem Namen",
+                Price = 88.99m
+            });
+            _products.Add(new Product()
+            {
+                ID = 9,
+                Name = "Ein Product mit ganz langem Namen, aber noch lääääääääännnnnnnnnnger",
+                Price = 188.99m
+            });
+            _products.Add(new Product()
+            {
+                ID = 10,
+                Name = "Test 1",
+                Price = 8.99m
+            });
+            _products.Add(new Product()
+            {
+                ID = 11,
+                Name = "Test 2",
+                Price = 8.99m
+            });
+            _products.Add(new Product()
+            {
+                ID = 12,
+                Name = "Test 3",
+                Price = 8.99m
+            });
+
         }
 
-        public static bool TryGetProductById(int id, out Product product)
+        public bool TryGetProductById(int id, out Product product)
         {
-            product = _products.Find(x => x.ID == id);
+            try
+            {
+                product = _products.Single(x => x.ID == id);
 
-            return product != null;
+                return true;
+            }
+            catch (Exception)
+            {
+                product = null;
+                return false;
+            }
         }
 
-        public static Product GetProductById(int id)
+        public Product GetProductById(int id)
         {
             try
             {

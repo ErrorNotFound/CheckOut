@@ -16,7 +16,7 @@ namespace CheckoutWPF.Model
         {
             get
             {
-                return ProductRepository.GetProductById(ProductID).Name;
+                return ProductRepository.Instance.GetProductById(ProductID).Name;
             }
         }
 
@@ -41,7 +41,7 @@ namespace CheckoutWPF.Model
         {
             get
             {
-                return ProductRepository.GetProductById(ProductID).Price;
+                return ProductRepository.Instance.GetProductById(ProductID).Price;
             }
         }
 
@@ -65,7 +65,7 @@ namespace CheckoutWPF.Model
                 return 0;
 
             Product product;
-            if (true == ProductRepository.TryGetProductById(ProductID, out product))
+            if (true == ProductRepository.Instance.TryGetProductById(ProductID, out product))
             {
                 return Count * product.Price;
             }
