@@ -3,6 +3,7 @@
       xmlns:model="clr-namespace:CheckoutWPF.Model"
       xmlns:data="clr-namespace:CheckoutWPF.DataSource"
       xmlns:helper="clr-namespace:CheckoutWPF.Helper"
+      xmlns:converter="clr-namespace:CheckoutWPF.Pages.Converter"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -18,6 +19,8 @@
     <Page.Resources>
         <helper:BindingProxy x:Key="shadowBackgroundProxy" Data="{DynamicResource Color1}" />
         <helper:ColorToShadowColorConverter x:Key="colorToShadowColorConverter" />
+
+        <converter:ObservableListToCollectionViewConverter x:Key="observableListToCollectionViewConverter" />
         
         <Style x:Key="OrderItemStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />
@@ -218,6 +221,7 @@
         </Grid>
         
         <Grid Grid.Row="1">
+            <!-- 
             <ItemsControl ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Products}"
                           Margin="10 10 0 10">
                 <ItemsControl.ItemsPanel>
@@ -230,11 +234,46 @@
                         <Button Tag="{Binding Name}"
                                 Style="{StaticResource TileStyle}"
                                 Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}"
-                                CommandParameter="{Binding ID}">
+                                CommandParameter="{Binding Id}">
                         </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+            -->
+            <TabControl ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Categories}">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+                <TabControl.ContentTemplate>
+                    <DataTemplate>
+                        <ItemsControl Margin="10 10 0 10">
+                            <ItemsControl.ItemsSource>
+                                <MultiBinding Converter="{StaticResource observableListToCollectionViewConverter}">
+                                    <Binding Source="{x:Static data:ProductRepository.Instance}" Path="Products" />
+                                    <Binding Path="Id" />
+                                </MultiBinding>
+                            </ItemsControl.ItemsSource>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Tag="{Binding Name}"
+                                            Style="{StaticResource TileStyle}"
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}"
+                                            CommandParameter="{Binding Id}">
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
+            </TabControl>
+            
         </Grid>
 
         <Grid Grid.Row="2"

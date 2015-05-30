@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace CheckoutWPF.Model
 {
-    public class Product
+    public class Category
     {
         public string Name { get; set; }
         public int Id { get; set; }
-        public int CategoryId { get; set; }
-        public decimal Price { get; set; }
     }
 }
