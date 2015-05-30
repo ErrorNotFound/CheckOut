@@ -23,15 +23,6 @@
         <TabControl Background="{DynamicResource BrushColor3}"
                     Style="{DynamicResource MaterialTabControlStyle}"
                     ItemContainerStyle="{DynamicResource MaterialTabControlItemStyle}">
-            <TabControl.ItemTemplate>
-                <DataTemplate>
-                    <!-- {Binding Header, Converter={StaticResource stringToUppercaseStringConverter}}-->
-                    <TextBlock Text="TEST"
-                               Foreground="{DynamicResource BrushColorFontDark}"
-                               FontSize="15"
-                               FontWeight="Medium"/>
-                </DataTemplate>
-            </TabControl.ItemTemplate>
             
             <TabControl.Items>
                 <TabItem Header="{DynamicResource MyProductsPage_TabHeader1}">
