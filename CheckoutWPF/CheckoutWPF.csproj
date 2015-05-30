@@ -67,6 +67,7 @@
     <Compile Include="DataSource\OrderBacklog.cs" />
     <Compile Include="DataSource\ProductRepository.cs" />
     <Compile Include="Helper\BindingProxy.cs" />
+    <Compile Include="Pages\Converter\CategoryIdToCategoryNameConverter.cs" />
     <Compile Include="Pages\Converter\ColorToShadowColorConverter.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">

@@ -162,8 +162,7 @@
                             </Border>
                             <ScrollViewer x:Name="ScrollViewerCurrentOrder"
                                           VerticalScrollBarVisibility="Visible"
-                                          HorizontalScrollBarVisibility="Disabled"
-                                          Margin="0 0 0 5">                                
+                                          HorizontalScrollBarVisibility="Disabled">                                
                                 <ItemsPresenter SizeChanged="CurrentOrderItemsPresenter_SizeChanged" />
                             </ScrollViewer>
                         </DockPanel>

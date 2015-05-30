@@ -19,6 +19,16 @@ namespace CheckoutWPF.DataSource
         }
     }
 
+    public class CategoryNotFoundException : Exception
+    {
+        public int CategoryID { get; set; }
+
+        public CategoryNotFoundException(int id)
+        {
+            CategoryID = id;
+        }
+    }
+
     public class ProductRepository : AbstractModel
     {
         private ObservableCollection<Product> _products;
@@ -207,6 +217,33 @@ namespace CheckoutWPF.DataSource
             {
                 throw new ProductNotFoundException(id);
             }            
+        }
+
+        public bool TryGetCategoryById(int id, out Category category)
+        {
+            try
+            {
+                category = _categories.Single(x => x.Id == id);
+
+                return true;
+            }
+            catch (Exception)
+            {
+                category = null;
+                return false;
+            }
+        }
+
+        public Category GetCategoryById(int id)
+        {
+            try
+            {
+                return _categories.Single(x => x.Id == id);
+            }
+            catch (Exception)
+            {
+                throw new CategoryNotFoundException(id);
+            }
         }
     }
 }
