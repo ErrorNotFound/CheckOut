@@ -235,7 +235,10 @@
                 </TabControl.Effect>
                 <TabControl.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name, Converter={StaticResource stringToUppercaseStringConverter}}" />
+                        <TextBlock Text="{Binding Name, Converter={StaticResource stringToUppercaseStringConverter}}"
+                                   Foreground="{DynamicResource BrushColorFontDark}" 
+                                   TextOptions.TextFormattingMode="Ideal"
+                                   FontSize="15"/>
                     </DataTemplate>
                 </TabControl.ItemTemplate>
                 <TabControl.ContentTemplate>

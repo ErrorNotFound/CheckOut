@@ -71,8 +71,9 @@
                           IsHitTestVisible="True">
                         <Border x:Name="Border"
                                 BorderBrush="Transparent"
-                                BorderThickness="0 0 0 3"
-                                SnapsToDevicePixels="True">
+                                BorderThickness="0 0 0 2"
+                                SnapsToDevicePixels="True"
+                                Margin="0 0 0 2">
                             <ContentPresenter x:Name="ContentSite"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center"
@@ -88,7 +89,7 @@
                                     Value="100" />
                             <Setter TargetName="Border" 
                                     Property="BorderBrush"
-                                    Value="White" />
+                                    Value="{DynamicResource BrushColor1}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
