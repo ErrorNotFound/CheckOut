@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="Pages\CheckoutPageViewModel.cs" />
     <Compile Include="Pages\Converter\ObservableListToCollectionViewConverter.cs" />
+    <Compile Include="Pages\Converter\StringToUppercaseStringConverter.cs" />
     <Compile Include="Pages\MyProductsPage.xaml.cs">
       <DependentUpon>MyProductsPage.xaml</DependentUpon>
     </Compile>

@@ -21,6 +21,7 @@
         
         <converter:ColorToShadowColorConverter x:Key="colorToShadowColorConverter" />
         <converter:ObservableListToCollectionViewConverter x:Key="observableListToCollectionViewConverter" />
+        <converter:StringToUppercaseStringConverter x:Key="stringToUppercaseStringConverter" />
         
         <Style x:Key="OrderItemStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />
@@ -234,7 +235,7 @@
                 </TabControl.Effect>
                 <TabControl.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Name, Converter={StaticResource stringToUppercaseStringConverter}}" />
                     </DataTemplate>
                 </TabControl.ItemTemplate>
                 <TabControl.ContentTemplate>
