@@ -116,7 +116,7 @@
                       Width="40"
                       Margin="10 0 0 0" />
 
-            <TextBlock Text="Checkout"
+            <TextBlock Text="{DynamicResource MainWindow_ApplicationName}"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Foreground="{DynamicResource BrushColorFontLight}"
@@ -154,26 +154,26 @@
                                   ShadowDepth="1"/>
             </Border.Effect>
             <StackPanel Background="{DynamicResource BrushColor2}">
-                <Button Tag="Checkout"
+                <Button Tag="{DynamicResource MainWindow_Menu_Item0}"
                         Style="{StaticResource MenuItemButtonStyle}"
                         CommandParameter="{x:Type pages:CheckoutPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_store_black_48dp_1x.png"
                            Stretch="Uniform"/>
                 </Button>
-                <Button Tag="My Products"
+                <Button Tag="{DynamicResource MainWindow_Menu_Item1}"
                         Style="{StaticResource MenuItemButtonStyle}"
                         CommandParameter="{x:Type pages:MyProductsPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_restaurant_menu_black_48dp_1x.png"
                            Stretch="Uniform"/>
                 </Button>
-                <Button Tag="Order History"
+                <Button Tag="{DynamicResource MainWindow_Menu_Item2}"
                         Style="{StaticResource MenuItemButtonStyle}"
                         CommandParameter="{x:Type pages:OrderHistoryPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_storage_black_48dp_1x.png"
                            Stretch="Uniform"/>
                 </Button>
                 <Separator Style="{StaticResource MenuItemSeparatorStyle}" />
-                <Button Tag="Settings"
+                <Button Tag="{DynamicResource MainWindow_Menu_Item3}"
                         Style="{StaticResource MenuItemButtonStyle}"
                         CommandParameter="{x:Type pages:SettingsPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_settings_black_48dp_1x.png"

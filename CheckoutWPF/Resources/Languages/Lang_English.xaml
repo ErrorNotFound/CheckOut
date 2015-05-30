@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:CheckoutWPF.Resources.Languages">
+
+    <sys:String x:Key="MainWindow_ApplicationName">Checkout</sys:String>
+    <sys:String x:Key="MainWindow_Menu_Item0">Checkout</sys:String>
+    <sys:String x:Key="MainWindow_Menu_Item1">My Products</sys:String>
+    <sys:String x:Key="MainWindow_Menu_Item2">Order History</sys:String>
+    <sys:String x:Key="MainWindow_Menu_Item3">Settings</sys:String>
+    
+    <sys:String x:Key="CheckoutPage_CurrentOrder_Header0">Product</sys:String>
+    <sys:String x:Key="CheckoutPage_CurrentOrder_Header1">Count</sys:String>
+    <sys:String x:Key="CheckoutPage_CurrentOrder_Header2">Per Item</sys:String>
+    <sys:String x:Key="CheckoutPage_CurrentOrder_Header3">Subtotal</sys:String>
+    <sys:String x:Key="CheckoutPage_CurrentOrder_Total">Total</sys:String>
+    <sys:String x:Key="CheckoutPage_ButtonText0">Clear Order</sys:String>
+    <sys:String x:Key="CheckoutPage_ButtonText1">Bar</sys:String>
+    <sys:String x:Key="CheckoutPage_ButtonText2">Next Order</sys:String>
+    
+</ResourceDictionary>
