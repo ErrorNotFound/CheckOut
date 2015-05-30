@@ -131,9 +131,10 @@
                        Foreground="{DynamicResource BrushColorFontLight}"/>
         </Grid>
 
-        <!-- Touch Layer over current page-->
+        <!-- Touch Layer over complete screen-->
         <Grid Name="gridActivePageTouchLayer"
-              Grid.Row="1"
+              Grid.Row="0"
+              Grid.RowSpan="2"
               Background="Transparent"
               IsHitTestVisible="{Binding ElementName=checkBoxMainMenu, Path=IsChecked}"
               PreviewMouseDown="gridActivePageTouchLayer_MouseLeftButtonDown"
