@@ -17,5 +17,8 @@
     <sys:String x:Key="CheckoutPage_ButtonText0">Clear Order</sys:String>
     <sys:String x:Key="CheckoutPage_ButtonText1">Bar</sys:String>
     <sys:String x:Key="CheckoutPage_ButtonText2">Next Order</sys:String>
-    
+
+    <sys:String x:Key="MyProductsPage_TabHeader1">Products</sys:String>
+    <sys:String x:Key="MyProductsPage_TabHeader2">Categories</sys:String>
+
 </ResourceDictionary>

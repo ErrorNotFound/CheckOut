@@ -63,6 +63,9 @@
     </Style>
 
     <Style x:Key="MaterialTabControlItemStyle" TargetType="{x:Type TabItem}">
+        <Setter Property="Foreground" Value="{DynamicResource BrushColorFontDark}" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
@@ -73,7 +76,7 @@
                                 BorderBrush="Transparent"
                                 BorderThickness="0 0 0 2"
                                 SnapsToDevicePixels="True"
-                                Margin="0 0 0 2">
+                                Margin="0 0 0 1">
                             <ContentPresenter x:Name="ContentSite"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center"

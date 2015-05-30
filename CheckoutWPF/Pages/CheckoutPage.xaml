@@ -20,7 +20,7 @@
         <helper:BindingProxy x:Key="shadowBackgroundProxy" Data="{DynamicResource Color1}" />
         
         <converter:ColorToShadowColorConverter x:Key="colorToShadowColorConverter" />
-        <converter:ObservableListToCollectionViewConverter x:Key="observableListToCollectionViewConverter" />
+        <converter:ObservableListToFilteredListConverter x:Key="observableListToFilteredListConverter" />
         <converter:StringToUppercaseStringConverter x:Key="stringToUppercaseStringConverter" />
         
         <Style x:Key="OrderItemStyle" TargetType="TextBlock">
@@ -98,10 +98,10 @@
               Margin="10">
             <Border Background="{DynamicResource BrushColor3}">
                 <Border.Effect>
-                    <DropShadowEffect BlurRadius="8" 
-                                                      Color="{DynamicResource ColorShadow}"
-                                                      Direction="270"
-                                                      ShadowDepth="2.5"/>
+                    <DropShadowEffect BlurRadius="8"
+                                      Color="{DynamicResource ColorShadow}"
+                                      Direction="270"
+                                      ShadowDepth="2.5"/>
                 </Border.Effect>
             </Border>
 
@@ -171,54 +171,51 @@
                 </ItemsControl.Template>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="0 0 0 0"
-                                BorderBrush="{DynamicResource BrushColor2}">
-                            <Grid Height="60">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="250" />
-                                    <ColumnDefinition Width="120" />
-                                    <ColumnDefinition Width="150" />
-                                </Grid.ColumnDefinitions>
-                            
-                                <TextBlock Text="{Binding ProductName}" 
+                        <Grid Height="60">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="250" />
+                                <ColumnDefinition Width="120" />
+                                <ColumnDefinition Width="150" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding ProductName}" 
                                            TextTrimming="CharacterEllipsis"
                                            Grid.Column="0"
                                            Style="{StaticResource OrderItemStyle}"
                                            Margin="10 0 0 0"/>
-                                <StackPanel Grid.Column="1"
+                            <StackPanel Grid.Column="1"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Left"
                                             Orientation="Horizontal">
-                                    <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}"
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}"
                                             CommandParameter="{Binding ProductID}"
                                             Style="{StaticResource AddButtonStyle}"
                                             Width="25"
                                             Height="25"
                                             Margin="0 0 10 0"/>
-                                    <TextBlock Text="{Binding Count, StringFormat={}{0} x}"   
+                                <TextBlock Text="{Binding Count, StringFormat={}{0} x}"   
                                                Style="{StaticResource OrderItemStyle}"
                                                HorizontalAlignment="Center"
                                                TextAlignment="Center"
                                                Width="30"/>
-                                    <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.RemoveProductCommand}"
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.RemoveProductCommand}"
                                             CommandParameter="{Binding ProductID}"
                                             Style="{StaticResource RemoveButtonStyle}"
                                             Width="25"
                                             Height="25"
                                             Margin="10 0 0 0"/>
-                                </StackPanel>
-                                <TextBlock Text="{Binding SingleValue, StringFormat={}{0} €}"
+                            </StackPanel>
+                            <TextBlock Text="{Binding SingleValue, StringFormat={}{0} €}"
                                            Grid.Column="2" 
                                            Style="{StaticResource OrderItemStyle}"
                                            HorizontalAlignment="Right"/>
-                                <TextBlock Text="{Binding TotalValue, StringFormat={}{0} €}" 
+                            <TextBlock Text="{Binding TotalValue, StringFormat={}{0} €}" 
                                            Grid.Column="3"
                                            Style="{StaticResource OrderItemStyle}"
                                            HorizontalAlignment="Right"
                                            Margin="0 0 20 0"/>
-                            </Grid>
-                        </Border>
+                        </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -232,17 +229,14 @@
                         ItemContainerStyle="{DynamicResource MaterialTabControlItemStyle}">
                 <TabControl.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name, Converter={StaticResource stringToUppercaseStringConverter}}"
-                                   Foreground="{DynamicResource BrushColorFontDark}" 
-                                   TextOptions.TextFormattingMode="Ideal"
-                                   FontSize="15"/>
+                        <TextBlock Text="{Binding Name, Converter={StaticResource stringToUppercaseStringConverter}}"/>
                     </DataTemplate>
                 </TabControl.ItemTemplate>
                 <TabControl.ContentTemplate>
                     <DataTemplate>
                         <ItemsControl Background="{DynamicResource BrushColor3}">
                             <ItemsControl.ItemsSource>
-                                <MultiBinding Converter="{StaticResource observableListToCollectionViewConverter}" Mode="OneWay">
+                                <MultiBinding Converter="{StaticResource observableListToFilteredListConverter}" Mode="OneWay">
                                     <Binding Source="{x:Static data:ProductRepository.Instance}" Path="Products" />
                                     <Binding Path="Id" />
                                 </MultiBinding>
