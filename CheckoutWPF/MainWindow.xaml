@@ -102,14 +102,6 @@
         <!-- Header -->
         <Grid Name="gridHeader" 
               Grid.Row="0">
-            <!--
-            <Grid.Effect>
-                <DropShadowEffect BlurRadius="8" 
-                                  Color="{DynamicResource ColorShadow}"
-                                  Direction="270"
-                                  ShadowDepth="1"/>
-            </Grid.Effect>
-            -->
             <CheckBox Name="checkBoxMainMenu"
                       Style="{StaticResource MenuCheckboxStyle}"
                       VerticalAlignment="Center"
@@ -144,19 +136,21 @@
         </Grid>
         
         <!-- Menu -->
-        <Border Grid.Row="1"
+        <Grid Grid.Row="1"
                 Width="200"
                 Height="Auto"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
                 Visibility="{Binding ElementName=checkBoxMainMenu, Path=IsChecked, Converter={StaticResource booleanToVisibilityConverter}}">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="8" 
-                                  Color="{DynamicResource ColorShadow}"
-                                  Direction="270"
-                                  ShadowDepth="1"/>
-            </Border.Effect>
-            <StackPanel Background="{DynamicResource BrushColor2}">
+            <Border Background="{DynamicResource BrushColor2}">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="8" 
+                                      Color="{DynamicResource ColorShadow}"
+                                      Direction="270"
+                                      ShadowDepth="1"/>
+                </Border.Effect>
+            </Border>
+            <StackPanel>
                 <Button Tag="{DynamicResource MainWindow_Menu_Item0}"
                         Style="{StaticResource MenuItemButtonStyle}"
                         CommandParameter="{x:Type pages:CheckoutPage}">
@@ -183,6 +177,6 @@
                            Stretch="Uniform"/>
                 </Button>
             </StackPanel>
-        </Border>
+        </Grid>
     </Grid>
 </Window>

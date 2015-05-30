@@ -58,19 +58,21 @@
         </Style>
 
         <Style x:Key="TileStyle" TargetType="Button">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="100" />
+            <Setter Property="Margin" Value="10" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid Background="{DynamicResource BrushColor2}"
-                              Width="100"
-                              Height="100"
-                              Margin="10 10 10 10">
-                            <Grid.Effect>
-                                <DropShadowEffect BlurRadius="8" 
-                                  Color="{DynamicResource ColorShadow}"
-                                  Direction="270"
-                                  ShadowDepth="2.5"/>
-                            </Grid.Effect>
+                        <Grid>
+                            <Border Background="{DynamicResource BrushColor2}">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="8" 
+                                                      Color="{DynamicResource ColorShadow}"
+                                                      Direction="270"
+                                                      ShadowDepth="2.5"/>
+                                </Border.Effect>
+                            </Border>
                             <TextBlock Text="{TemplateBinding Tag}"
                                        TextWrapping="Wrap"
                                        TextTrimming="CharacterEllipsis"
@@ -93,15 +95,16 @@
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0"
-              Margin="10"
-              Background="{DynamicResource BrushColor3}">
-            <Grid.Effect>
-                <DropShadowEffect BlurRadius="8" 
-                                  Color="{DynamicResource ColorShadow}"
-                                  Direction="270"
-                                  ShadowDepth="2.5"/>
-            </Grid.Effect>
-            
+              Margin="10">
+            <Border Background="{DynamicResource BrushColor3}">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="8" 
+                                                      Color="{DynamicResource ColorShadow}"
+                                                      Direction="270"
+                                                      ShadowDepth="2.5"/>
+                </Border.Effect>
+            </Border>
+
             <ItemsControl ItemsSource="{Binding CurrentOrder.Items}">
                 <ItemsControl.Template>
                     <ControlTemplate TargetType="ItemsControl">
@@ -227,12 +230,6 @@
                         Background="{DynamicResource BrushColor3}"
                         Style="{DynamicResource MaterialTabControlStyle}"
                         ItemContainerStyle="{DynamicResource MaterialTabControlItemStyle}">
-                <TabControl.Effect>
-                    <DropShadowEffect BlurRadius="8" 
-                                  Color="{DynamicResource ColorShadow}"
-                                  Direction="270"
-                                  ShadowDepth="2.5"/>
-                </TabControl.Effect>
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name, Converter={StaticResource stringToUppercaseStringConverter}}"
@@ -267,18 +264,18 @@
                         </ItemsControl>
                     </DataTemplate>
                 </TabControl.ContentTemplate>                
-            </TabControl>
-            
+            </TabControl>            
         </Grid>
 
-        <Grid Grid.Row="2"
-              Background="{DynamicResource BrushColor2}">
-            <Grid.Effect>
-                <DropShadowEffect BlurRadius="8" 
-                                  Color="{DynamicResource ColorShadow}"
-                                  Direction="90"
-                                  ShadowDepth="1"/>
-            </Grid.Effect>
+        <Grid Grid.Row="2">
+            <Border Background="{DynamicResource BrushColor2}">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="8"
+                                      Color="{DynamicResource ColorShadow}"
+                                      Direction="90"
+                                      ShadowDepth="2.5"/>
+                </Border.Effect>
+            </Border>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">
                 <Button Content="{DynamicResource CheckoutPage_ButtonText0}"
