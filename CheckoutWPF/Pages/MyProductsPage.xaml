@@ -17,19 +17,9 @@
     
     <Page.Resources>
         <converter:StringToUppercaseStringConverter x:Key="stringToUppercaseStringConverter" />
-        <converter:CategoryIdToCategoryNameConverter x:Key="categoryIdToCategoryNameConverter" />
 
         <Style x:Key="TableItemStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Foreground" Value="{DynamicResource BrushColorFontDark}" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="FontWeight" Value="Medium" />
-        </Style>
-        <Style x:Key="TableHeaderStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Foreground" Value="Gray" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="FontWeight" Value="Medium" />
+            
         </Style>
     </Page.Resources>
 
@@ -40,8 +30,7 @@
             
             <TabControl.Items>
                 <TabItem Header="{DynamicResource MyProductsPage_TabHeader1}">
-                    <Grid  Background="{DynamicResource BrushColor3}">
-
+                    <Grid Background="{DynamicResource BrushColor3}">
                         <Grid Margin="10">
                             <Border Background="{DynamicResource BrushColor3}">
                                 <Border.Effect>
@@ -51,58 +40,59 @@
                                           ShadowDepth="2.5"/>
                                 </Border.Effect>
                             </Border>
-                            <ItemsControl ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Products}"
-                                          Background="White">
-                                <ItemsControl.Template>
-                                    <ControlTemplate TargetType="ItemsControl">
-                                        <ScrollViewer x:Name="ScrollViewerCurrentOrder"
-                                                      VerticalScrollBarVisibility="Hidden"
-                                                      HorizontalScrollBarVisibility="Disabled"
-                                                      Background="{TemplateBinding Background}">
-                                            <ItemsPresenter />
-                                        </ScrollViewer>
-                                    </ControlTemplate>
-                                </ItemsControl.Template>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border Height="60"
-                                                BorderBrush="{DynamicResource BrushColor3}"
-                                                BorderThickness="0 0 0 1">
-                                            <Grid Margin="20 0 20 0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="100" />
-                                                    <ColumnDefinition Width="200" />
-                                                    <ColumnDefinition Width="200" />
-                                                </Grid.ColumnDefinitions>
-
-                                                <TextBlock Text="{Binding Name}"
-                                                           TextTrimming="CharacterEllipsis"
-                                                           Style="{StaticResource TableItemStyle}"
-                                                           Grid.Column="0"/>
-                                                <TextBlock Text="{Binding Id}"
-                                                           Style="{StaticResource TableItemStyle}"
-                                                           TextAlignment="Right"
-                                                           Grid.Column="1"/>
-                                                <TextBlock Text="{Binding CategoryId, Converter={StaticResource categoryIdToCategoryNameConverter}}"
-                                                           Style="{StaticResource TableItemStyle}"
-                                                           TextAlignment="Right"
-                                                           Grid.Column="2"/>
-                                                <TextBlock Text="{Binding Price, StringFormat={}{0} €}"
-                                                           Style="{StaticResource TableItemStyle}"
-                                                           TextAlignment="Right"
-                                                           Grid.Column="3"/>
-                                            </Grid>
-                                        </Border>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
+                            
+                            <DataGrid ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Products}"
+                                      SelectionMode="Single"
+                                      Style="{DynamicResource MaterialDataGridStyle}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Name"
+                                                        Binding="{Binding Name}" 
+                                                        Width="*"
+                                                        IsReadOnly="True"
+                                                        CellStyle="{DynamicResource MaterialDataGridCellLeftStyle}"
+                                                        HeaderStyle="{DynamicResource MaterialDataGridColumnHeaderLeftStyle}"/>
+                                    <DataGridComboBoxColumn Header="Category"
+                                                            ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Categories}"
+                                                            DisplayMemberPath="Name"
+                                                            SelectedValuePath="Id"
+                                                            SelectedValueBinding="{Binding CategoryId, Mode=TwoWay}"  
+                                                            Width="200"/>
+                                    <DataGridTextColumn Header="Price" 
+                                                        Binding="{Binding Price, StringFormat={}{0} €}"
+                                                        Width="200"
+                                                        IsReadOnly="True"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                     </Grid>
                 </TabItem>
                 <TabItem Header="{DynamicResource MyProductsPage_TabHeader2}">
-                    <Grid  Background="{DynamicResource BrushColor3}">
-
+                    <Grid Background="{DynamicResource BrushColor3}">
+                        <Grid Margin="10">
+                            <Border Background="{DynamicResource BrushColor3}">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="8"
+                                          Color="{DynamicResource ColorShadow}"
+                                          Direction="270"
+                                          ShadowDepth="2.5"/>
+                                </Border.Effect>
+                            </Border>
+                            
+                            <DataGrid ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Categories}"
+                                      Style="{DynamicResource MaterialDataGridStyle}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Name" 
+                                                        Binding="{Binding Name}"
+                                                        CellStyle="{DynamicResource MaterialDataGridCellLeftStyle}"
+                                                        HeaderStyle="{DynamicResource MaterialDataGridColumnHeaderLeftStyle}"
+                                                        Width="*"/>
+                                    <DataGridTextColumn Header="Id" 
+                                                        Binding="{Binding Id}"
+                                                        Width="200"
+                                                        />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
                     </Grid>
                 </TabItem>
             </TabControl.Items>

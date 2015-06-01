@@ -10,6 +10,7 @@
                 <ResourceDictionary Source=".\Resources\Languages\Lang_English.xaml" />
                 <ResourceDictionary Source=".\Resources\Styles\ScrollViewerStyles.xaml" />
                 <ResourceDictionary Source=".\Resources\Styles\ButtonStyles.xaml" />
+                <ResourceDictionary Source=".\Resources\Styles\DataGridStyles.xaml" />
                 <ResourceDictionary Source=".\Resources\Styles\TabControlStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

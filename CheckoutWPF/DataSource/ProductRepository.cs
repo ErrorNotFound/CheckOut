@@ -245,5 +245,17 @@ namespace CheckoutWPF.DataSource
                 throw new CategoryNotFoundException(id);
             }
         }
+
+        public int GetCategoryIdByName(string name)
+        {
+            try
+            {
+                return _categories.Single(x => x.Name == name).Id;
+            }
+            catch (Exception)
+            {
+                throw new CategoryNotFoundException(-1);
+            }
+        }
     }
 }

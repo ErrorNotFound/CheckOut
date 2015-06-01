@@ -17,8 +17,8 @@ namespace CheckoutWPF.Pages.Converter
             if(value is int)
             {
                 var catId = (int)value;
-
-                return ProductRepository.Instance.GetCategoryById(catId).Name;
+                var category = ProductRepository.Instance.GetCategoryById(catId);
+                return category.Name;
             }
 
             return DependencyProperty.UnsetValue;
@@ -26,7 +26,15 @@ namespace CheckoutWPF.Pages.Converter
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            if(value is string)
+            {
+                var name = (string)value;
+
+                var catId = ProductRepository.Instance.GetCategoryIdByName(name);
+                return catId;
+            }
+
+            return 0;
         }
     }
 }
