@@ -17,6 +17,7 @@
     
     <Page.Resources>
         <converter:StringToUppercaseStringConverter x:Key="stringToUppercaseStringConverter" />
+        <converter:DoNothingConverter x:Key="doNothingConverter" />
 
         <Style x:Key="TableItemStyle" TargetType="TextBlock">
             
@@ -51,12 +52,31 @@
                                                         IsReadOnly="True"
                                                         CellStyle="{DynamicResource MaterialDataGridCellLeftStyle}"
                                                         HeaderStyle="{DynamicResource MaterialDataGridColumnHeaderLeftStyle}"/>
+                                    
                                     <DataGridComboBoxColumn Header="Category"
                                                             ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Categories}"
                                                             DisplayMemberPath="Name"
                                                             SelectedValuePath="Id"
-                                                            SelectedValueBinding="{Binding CategoryId, Mode=TwoWay}"  
+                                                            SelectedValueBinding="{Binding CategoryId, Mode=TwoWay}"
                                                             Width="200"/>
+                                    <!--
+                                    <DataGridTemplateColumn Header="Test"
+                                                            Width="200">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Categories}"
+                                                          DisplayMemberPath="Name"
+                                                          SelectedValuePath="Id"
+                                                          DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                                          SelectedValue="{Binding CategoryId, Mode=TwoWay}"
+                                                          Width="100"
+                                                          Style="{DynamicResource MaterialComboBoxStyle}"
+                                                          ItemContainerStyle="{DynamicResource MaterialComboBoxItemStyle}"/>
+                                               
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+ -->
                                     <DataGridTextColumn Header="Price" 
                                                         Binding="{Binding Price, StringFormat={}{0} €}"
                                                         Width="200"
