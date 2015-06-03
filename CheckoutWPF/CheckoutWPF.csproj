@@ -66,7 +66,6 @@
     </Compile>
     <Compile Include="DataSource\OrderBacklog.cs" />
     <Compile Include="DataSource\ProductRepository.cs" />
-    <Compile Include="Helper\BindingProxy.cs" />
     <Compile Include="Pages\Converter\CategoryIdToCategoryNameConverter.cs" />
     <Compile Include="Pages\Converter\ColorToShadowColorConverter.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
@@ -133,7 +132,6 @@
       <DependentUpon>CheckoutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CheckoutPageViewModel.cs" />
-    <Compile Include="Pages\Converter\DoNothingConverter.cs" />
     <Compile Include="Pages\Converter\ObservableListToFilteredListConverter.cs" />
     <Compile Include="Pages\Converter\StringToUppercaseStringConverter.cs" />
     <Compile Include="Pages\MyProductsPage.xaml.cs">

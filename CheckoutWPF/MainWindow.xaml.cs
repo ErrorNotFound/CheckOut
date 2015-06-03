@@ -49,5 +49,11 @@ namespace CheckoutWPF
         {
             CloseMenuIfOpen(e);
         }
+
+        // disable boundary movement of window
+        private void Grid_ManipulationBoundaryFeedback(object sender, ManipulationBoundaryFeedbackEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

@@ -9,12 +9,9 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="20" />
             </Grid.ColumnDefinitions>
+
             <Border x:Name="Border"
-                    Grid.ColumnSpan="2"
-                    CornerRadius="2"
-                    BorderThickness="1">
-            </Border>
-            <Border Grid.Column="0" >
+                    Grid.Column="0" >
                 <Border.Background>
                     <SolidColorBrush Color="Transparent"/>
                 </Border.Background>
@@ -23,17 +20,30 @@
                   Grid.Column="1"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
+                  RenderTransformOrigin="0.5 0.5"
                   Data="M 0 0 L 4 4 L 8 0 Z" >
                 <Path.Fill>
                     <SolidColorBrush Color="Gray"/>
                 </Path.Fill>
+                <Path.RenderTransform>
+                    <RotateTransform Angle="0" />
+                </Path.RenderTransform>
             </Path>
         </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="Arrow" Property="RenderTransform">
+                    <Setter.Value>
+                        <RotateTransform Angle="180" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
     
 
     <Style x:Key="MaterialComboBoxStyle" TargetType="ComboBox">
-        <Setter Property="Background" Value="White" />
+        <Setter Property="Background" Value="LightGray" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Height" Value="48" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -43,7 +53,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
-                    <Grid>
+                    <Grid Name="gridMain">
                         <ToggleButton x:Name="ToggleButton"
                                       Template="{StaticResource MaterialComboBoxToggleButton}"
                                       Grid.Column="2"
@@ -55,8 +65,8 @@
                                           Content="{TemplateBinding SelectionBoxItem}"
                                           ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                           ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                          Margin="3,3,23,3"
-                                          VerticalAlignment="Stretch"
+                                          Margin="10,3,23,3"
+                                          VerticalAlignment="Center"
                                           HorizontalAlignment="Left">
                         </ContentPresenter>
                         <TextBox x:Name="PART_EditableTextBox"
@@ -79,14 +89,13 @@
                                   MinWidth="{TemplateBinding ActualWidth}"
                                   MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                   Background="{TemplateBinding Background}">
-                                <Border x:Name="DropDownBorder"
-                                        BorderThickness="1">
-                                    <Border.BorderBrush>
-                                        <SolidColorBrush Color="{DynamicResource BorderMediumColor}" />
-                                    </Border.BorderBrush>
-                                    <Border.Background>
-                                        <SolidColorBrush Color="{DynamicResource ControlLightColor}" />
-                                    </Border.Background>
+                                <Border x:Name="DropDownBorder">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="8"
+                                                          Color="{DynamicResource ColorShadow}"
+                                                          Direction="270"
+                                                          ShadowDepth="2.5"/>
+                                    </Border.Effect>
                                 </Border>
                                 <ScrollViewer Margin="0"
                                               SnapsToDevicePixels="True">
@@ -96,6 +105,7 @@
                             </Grid>
                         </Popup>
                     </Grid>
+                    
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasItems"
                                  Value="false">
@@ -118,6 +128,9 @@
                                     Property="Margin"
                                     Value="0,2,0,0" />
                         </Trigger>
+                        <Trigger Property="IsDropDownOpen" Value="True">
+                            <Setter TargetName="gridMain" Property="Background" Value="LightGray" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -126,12 +139,12 @@
     
     
     <Style x:Key="MaterialComboBoxItemStyle" TargetType="ComboBoxItem">
-        <Setter Property="Background" Value="White" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Height" Value="48" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Padding" Value="10 0 0 0" />
     </Style>
 
 </ResourceDictionary>

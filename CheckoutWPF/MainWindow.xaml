@@ -70,11 +70,11 @@
         
         <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
         <converter:ColorToShadowColorConverter x:Key="colorToShadowColorConverter" />
-        <helper:BindingProxy x:Key="shadowBackgroundProxy" Data="{DynamicResource Color1}" />
         <BlurEffect x:Key="blurEffect" Radius="0"/>
     </Window.Resources>
 
-    <Grid Background="{DynamicResource BrushColor2}" >
+    <Grid Background="{DynamicResource BrushColor2}"
+          ManipulationBoundaryFeedback="Grid_ManipulationBoundaryFeedback">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
