@@ -17,8 +17,6 @@
         <local:CheckoutPageViewModel />
     </Page.DataContext>
     <Page.Resources>
-        <helper:BindingProxy x:Key="shadowBackgroundProxy" Data="{DynamicResource Color1}" />
-        
         <converter:ColorToShadowColorConverter x:Key="colorToShadowColorConverter" />
         <converter:ObservableListToFilteredListConverter x:Key="observableListToFilteredListConverter" />
         <converter:StringToUppercaseStringConverter x:Key="stringToUppercaseStringConverter" />
