@@ -17,8 +17,6 @@
     
     <Page.Resources>
         <converter:StringToUppercaseStringConverter x:Key="stringToUppercaseStringConverter" />
-        <converter:DoNothingConverter x:Key="doNothingConverter" />
-
         <Style x:Key="TableItemStyle" TargetType="TextBlock">
             
         </Style>
