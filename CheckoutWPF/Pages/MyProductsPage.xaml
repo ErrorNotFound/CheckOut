@@ -28,7 +28,7 @@
                     ItemContainerStyle="{DynamicResource MaterialTabControlItemStyle}">
             
             <TabControl.Items>
-                <TabItem Header="{DynamicResource MyProductsPage_TabHeader1}">
+                <TabItem Header="{DynamicResource MyProductsPage_TabHeader0}">
                     <Grid Background="{DynamicResource BrushColor3}">
                         <Grid Margin="10">
                             <Border Background="{DynamicResource BrushColor3}">
@@ -44,16 +44,17 @@
                                       SelectionMode="Single"
                                       Style="{DynamicResource MaterialDataGridStyle}">
                                 <DataGrid.Columns>
-                                    
-                                    <DataGridTextColumn Header="Name"
+
+                                    <DataGridTextColumn Header="{DynamicResource MyProductsPage_Tab0_Column0}"
                                                         Binding="{Binding Name}" 
                                                         Width="*"
                                                         IsReadOnly="True"
                                                         CellStyle="{DynamicResource MaterialDataGridCellLeftStyle}"
                                                         HeaderStyle="{DynamicResource MaterialDataGridColumnHeaderLeftStyle}"/>
-                                    
-                                    <DataGridTemplateColumn Header="Category"
-                                                            Width="200">
+
+                                    <DataGridTemplateColumn Header="{DynamicResource MyProductsPage_Tab0_Column1}"
+                                                            Width="200"
+                                                            SortMemberPath="Id">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <ComboBox ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Categories}"
@@ -68,7 +69,7 @@
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
 
-                                    <DataGridTextColumn Header="Price" 
+                                    <DataGridTextColumn Header="{DynamicResource MyProductsPage_Tab0_Column2}" 
                                                         Binding="{Binding Price, StringFormat={}{0} €}"
                                                         Width="200"
                                                         IsReadOnly="True"/>
@@ -77,7 +78,7 @@
                         </Grid>
                     </Grid>
                 </TabItem>
-                <TabItem Header="{DynamicResource MyProductsPage_TabHeader2}">
+                <TabItem Header="{DynamicResource MyProductsPage_TabHeader1}">
                     <Grid Background="{DynamicResource BrushColor3}">
                         <Grid Margin="10">
                             <Border Background="{DynamicResource BrushColor3}">
@@ -92,12 +93,12 @@
                             <DataGrid ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Categories}"
                                       Style="{DynamicResource MaterialDataGridStyle}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Name" 
+                                    <DataGridTextColumn Header="{DynamicResource MyProductsPage_Tab1_Column0}" 
                                                         Binding="{Binding Name}"
                                                         CellStyle="{DynamicResource MaterialDataGridCellLeftStyle}"
                                                         HeaderStyle="{DynamicResource MaterialDataGridColumnHeaderLeftStyle}"
                                                         Width="*"/>
-                                    <DataGridTextColumn Header="Id" 
+                                    <DataGridTextColumn Header="{DynamicResource MyProductsPage_Tab1_Column1}" 
                                                         Binding="{Binding Id}"
                                                         Width="200"
                                                         />
