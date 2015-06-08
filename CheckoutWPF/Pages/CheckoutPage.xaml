@@ -185,23 +185,23 @@
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Left"
                                             Orientation="Horizontal">
-                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.AddProductCommand}"
-                                            CommandParameter="{Binding ProductID}"
-                                            Style="{StaticResource AddButtonStyle}"
-                                            Width="25"
-                                            Height="25"
-                                            Margin="0 0 10 0"/>
-                                <TextBlock Text="{Binding Count, StringFormat={}{0} x}"   
-                                               Style="{StaticResource OrderItemStyle}"
-                                               HorizontalAlignment="Center"
-                                               TextAlignment="Center"
-                                               Width="30"/>
-                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.RemoveProductCommand}"
-                                            CommandParameter="{Binding ProductID}"
-                                            Style="{StaticResource RemoveButtonStyle}"
-                                            Width="25"
-                                            Height="25"
-                                            Margin="10 0 0 0"/>
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.IncreaseProductCountCommand}"
+                                        CommandParameter="{Binding ItemID}"
+                                        Style="{StaticResource AddButtonStyle}"
+                                        Width="25"
+                                        Height="25"
+                                        Margin="0 0 10 0"/>
+                                <TextBlock Text="{Binding Count, StringFormat={}{0} x}"  
+                                           Style="{StaticResource OrderItemStyle}"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           Width="30"/>
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.DecreaseProductCountCommand}"
+                                        CommandParameter="{Binding ItemID}"
+                                        Style="{StaticResource RemoveButtonStyle}"
+                                        Width="25"
+                                        Height="25"
+                                        Margin="10 0 0 0"/>
                             </StackPanel>
                             <TextBlock Text="{Binding SingleValue, StringFormat={}{0} €}"
                                            Grid.Column="2" 

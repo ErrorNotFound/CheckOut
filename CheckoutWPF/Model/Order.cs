@@ -1,4 +1,5 @@
 ﻿using CheckoutWPF.Abstract;
+using CheckoutWPF.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -42,14 +43,16 @@ namespace CheckoutWPF.Model
             }
         }
 
-        public void AddProduct(int productId)
+        public void AddProductByProductId(int productId)
         {
+            var createNewItem = Settings.Default.CreateNewOrderItemForSameProduct;
+
             // check if we have that product already
             var item = Items.FirstOrDefault(x => x.ProductID == productId);
 
-            if(item != null)
+            if(item != null && !createNewItem)
             {
-                item.Count++;
+                AddOrRemoveItemsFromOrderItem(item, true);
             }
             else
             {
@@ -58,18 +61,47 @@ namespace CheckoutWPF.Model
             }
         }
 
-        public void RemoveProduct(int id)
+        public void IncreaseOrderItemCount(Guid itemID)
+        {
+            var item = Items.FirstOrDefault(x => x.ItemID == itemID);
+            if(item != null)
+            {
+                AddOrRemoveItemsFromOrderItem(item, true);
+            }
+        }
+
+        public void RemoveProductByProductId(int id)
         {
             var item = Items.FirstOrDefault(x => x.ProductID == id);
             if(item != null)
             {
-                item.Count--;
-
-                if (item.Count == 0)
-                    Items.Remove(item);
+                AddOrRemoveItemsFromOrderItem(item, false);
             }
         }
 
+        public void DecreaseOrderItemCount(Guid itemID)
+        {
+            var item = Items.FirstOrDefault(x => x.ItemID == itemID);
+            if (item != null)
+            {
+                AddOrRemoveItemsFromOrderItem(item, false);
+            }
+        }
+
+        private void AddOrRemoveItemsFromOrderItem(OrderItem orderitem, bool add)
+        {
+            if(add)
+            {
+                orderitem.Count++;
+            }
+            else
+            {
+                orderitem.Count--;
+
+                if (orderitem.Count == 0)
+                    Items.Remove(orderitem);
+            }            
+        }
 
         private void Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -102,11 +134,11 @@ namespace CheckoutWPF.Model
         public static Order GetSampleOrder()
         {
             var order = new Order();
-            order.AddProduct(1);
-            order.AddProduct(1);
-            order.AddProduct(2);
-            order.AddProduct(2);
-            order.AddProduct(3);
+            order.AddProductByProductId(1);
+            order.AddProductByProductId(1);
+            order.AddProductByProductId(2);
+            order.AddProductByProductId(2);
+            order.AddProductByProductId(3);
             return order;
         }
     }

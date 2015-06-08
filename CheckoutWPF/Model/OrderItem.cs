@@ -12,6 +12,8 @@ namespace CheckoutWPF.Model
     {
         public int ProductID { get; private set; }
 
+        public Guid ItemID { get; private set; }
+
         public string ProductName
         {
             get
@@ -57,6 +59,8 @@ namespace CheckoutWPF.Model
         {
             ProductID = productId;
             Count = 1;
+
+            ItemID = Guid.NewGuid();
         }
 
         private decimal CalculateTotalValue()

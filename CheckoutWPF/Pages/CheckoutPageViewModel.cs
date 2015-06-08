@@ -95,6 +95,24 @@ namespace CheckoutWPF.Pages
             }
         }
 
+        private RelayCommand<Guid> _increaseProductCountCommand;
+        public RelayCommand<Guid> IncreaseProductCountCommand
+        {
+            get
+            {
+                if (_increaseProductCountCommand == null)
+                {
+                    _increaseProductCountCommand = new RelayCommand<Guid>(param => IncreaseProductCount(param));
+                }
+                return _increaseProductCountCommand;
+            }
+            set
+            {
+                _increaseProductCountCommand = value;
+            }
+        }
+
+
         private RelayCommand<int> _removeProductCommand;
         public RelayCommand<int> RemoveProductCommand
         {
@@ -109,6 +127,23 @@ namespace CheckoutWPF.Pages
             set
             {
                 _removeProductCommand = value;
+            }
+        }
+
+        private RelayCommand<Guid> _decreaseProductCountCommand;
+        public RelayCommand<Guid> DecreaseProductCountCommand
+        {
+            get
+            {
+                if (_decreaseProductCountCommand == null)
+                {
+                    _decreaseProductCountCommand = new RelayCommand<Guid>(param => DecreaseProductCount(param));
+                }
+                return _decreaseProductCountCommand;
+            }
+            set
+            {
+                _decreaseProductCountCommand = value;
             }
         }
 
@@ -141,12 +176,23 @@ namespace CheckoutWPF.Pages
 
         private void AddProduct(int id)
         {
-            CurrentOrder.AddProduct(id);
+            CurrentOrder.AddProductByProductId(id);
+        }
+
+        private void IncreaseProductCount(Guid itemId)
+        {
+            CurrentOrder.IncreaseOrderItemCount(itemId);
         }
 
         private void RemoveProduct(int id)
         {
-            CurrentOrder.RemoveProduct(id);
+            CurrentOrder.RemoveProductByProductId(id);
         }
+
+        private void DecreaseProductCount(Guid itemId)
+        {
+            CurrentOrder.DecreaseOrderItemCount(itemId);
+        }
+
     }
 }
