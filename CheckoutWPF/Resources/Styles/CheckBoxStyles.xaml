@@ -1,0 +1,118 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:CheckoutWPF.Pages.UserControls"
+                    xmlns:local="clr-namespace:CheckoutWPF.Resources.Styles">
+
+
+    <ControlTemplate x:Key="MaterialSwitchTemplate" 
+                     TargetType="{x:Type controls:Switch}">
+        <ControlTemplate.Resources>
+            <Color x:Key="ColorSwitchCheckedSlider">#009688</Color>
+            <Color x:Key="ColorSwitchCheckedBar">#77C2BB</Color>
+            <Color x:Key="ColorSwitchUncheckedSlider">#F1F1F1</Color>
+            <Color x:Key="ColorSwitchUncheckedBar">#AFAEAE</Color>
+            <SolidColorBrush x:Key="BrushColorSwitchCheckedSlider" Color="{StaticResource ColorSwitchCheckedSlider}" />
+            <SolidColorBrush x:Key="BrushColorSwitchCheckedBar" Color="{StaticResource ColorSwitchCheckedBar}" />
+            <SolidColorBrush x:Key="BrushColorSwitchUncheckedSlider" Color="{StaticResource ColorSwitchUncheckedSlider}" />
+            <SolidColorBrush x:Key="BrushColorSwitchUncheckedBar" Color="{StaticResource ColorSwitchUncheckedBar}" />
+
+
+            <Storyboard x:Key="OnChecking">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" 
+                                               Storyboard.TargetName="slider" 
+                                               Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" 
+                                          Value="10"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimation BeginTime="00:00:00" 
+                                Duration="00:00:00.2000000" 
+                                To="{StaticResource ColorSwitchCheckedSlider}" 
+                                Storyboard.TargetName="slider" 
+                                Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)" />
+                <ColorAnimation BeginTime="00:00:00" 
+                                Duration="00:00:00.2000000" 
+                                To="{StaticResource ColorSwitchCheckedBar}" 
+                                Storyboard.TargetName="bar" 
+                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" />    
+            </Storyboard>
+            <Storyboard x:Key="OnUnchecking">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="slider" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-10"/>
+                </DoubleAnimationUsingKeyFrames> 
+                <ColorAnimation BeginTime="00:00:00" 
+                                Duration="00:00:00.2000000" 
+                                To="{StaticResource ColorSwitchUncheckedSlider}" 
+                                Storyboard.TargetName="slider" 
+                                Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)" />
+                <ColorAnimation BeginTime="00:00:00" 
+                                Duration="00:00:00.2000000" 
+                                To="{StaticResource ColorSwitchUncheckedBar}" 
+                                Storyboard.TargetName="bar" 
+                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" />
+            </Storyboard>
+        </ControlTemplate.Resources>
+
+        <Grid Background="Transparent"
+              Height="30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Border Name="bar"
+                        Background="{StaticResource BrushColorSwitchUncheckedBar}"
+                        Grid.Column="0"
+                        CornerRadius="8"
+                        Height="16"
+                        Width="35"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
+
+                <Ellipse Name="slider"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         Width="20"
+                         Height="20"
+                         Fill="{StaticResource BrushColorSwitchUncheckedSlider}">
+                    <Ellipse.RenderTransform>
+                        <TranslateTransform x:Name="ellipseTranslateTransform" X="-10" />
+                    </Ellipse.RenderTransform>
+                    <Ellipse.Effect>
+                        <DropShadowEffect BlurRadius="4"
+                                          Color="{DynamicResource ColorShadow}"
+                                          Direction="270"
+                                          ShadowDepth="0.5"/>
+                    </Ellipse.Effect>
+                </Ellipse>
+            </Grid>
+
+            <ContentPresenter Grid.Column="1"
+                              VerticalAlignment="Center"
+                              TextBlock.Foreground="{DynamicResource BrushColorFontDark}"
+                              />
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource OnUnchecking}" x:Name="OnUnchecking_BeginStoryboard"/>
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource OnChecking}" x:Name="OnChecking_BeginStoryboard"/>
+                </Trigger.EnterActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+
+    </ControlTemplate>
+
+    <Style x:Key="MaterialSwitchStyle" TargetType="{x:Type controls:Switch}">
+        <Setter Property="Foreground" Value="{DynamicResource BrushColorSwitchSlider}" />
+        <Setter Property="Background" Value="{DynamicResource BrushColorSwitchBar}" />
+        <Setter Property="Template" Value="{StaticResource MaterialSwitchTemplate}" />
+        <Setter Property="UncheckedSliderColor" Value="{DynamicResource ColorSwitchUncheckedSlider}" />
+        <Setter Property="UncheckedBarColor" Value="{DynamicResource ColorSwitchUncheckedBar}" />
+        <Setter Property="CheckedSliderColor" Value="{DynamicResource ColorSwitchCheckedSlider}" />
+        <Setter Property="CheckedBarColor" Value="{DynamicResource ColorSwitchCheckedBar}" />
+    </Style>
+</ResourceDictionary>

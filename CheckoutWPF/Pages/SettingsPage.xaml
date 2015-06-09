@@ -1,6 +1,7 @@
 ﻿<Page x:Class="CheckoutWPF.Pages.SettingsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:settings="clr-namespace:CheckoutWPF.Properties"
+      xmlns:controls="clr-namespace:CheckoutWPF.Pages.UserControls"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -17,8 +18,10 @@
     <Grid>
         <TabControl TabStripPlacement="Left">
             <TabItem Header="General">
-                <CheckBox Content="Create New OrderItem"
-                          IsChecked="{Binding Source={x:Static settings:Settings.Default}, Path=CreateNewOrderItemForSameProduct, Mode=TwoWay}" />
+                <controls:Switch Content="Create New OrderItem"
+                                 IsChecked="{Binding Source={x:Static settings:Settings.Default}, Path=CreateNewOrderItemForSameProduct, Mode=TwoWay}"
+                                 Style="{DynamicResource MaterialSwitchStyle}"
+                                 VerticalAlignment="Top"/>
             </TabItem>
             <TabItem Header="Globalization">
 

@@ -12,14 +12,17 @@
     <Color x:Key="ColorFontDark">#000000</Color>
     <Color x:Key="ColorShadow">#BBBBBB</Color>
 
-    <SolidColorBrush x:Key="BrushColor0" Color="{StaticResource Color0}" />
-    <SolidColorBrush x:Key="BrushColor1" Color="{StaticResource Color1}" />
-    <SolidColorBrush x:Key="BrushColor2" Color="{StaticResource Color2}" />
-    <SolidColorBrush x:Key="BrushColor3" Color="{StaticResource Color3}" />
-    <SolidColorBrush x:Key="BrushColor4" Color="{StaticResource Color4}" />
-    <SolidColorBrush x:Key="BrushHighlightColor0" Color="{StaticResource HighlightColor0}" />
-    <SolidColorBrush x:Key="BrushHighlightColor1" Color="{StaticResource HighlightColor1}" />
-    <SolidColorBrush x:Key="BrushColorFontLight" Color="{StaticResource ColorFontLight}" />
-    <SolidColorBrush x:Key="BrushColorFontDark" Color="{StaticResource ColorFontDark}" />
-    <SolidColorBrush x:Key="BrushColorShadow" Color="{StaticResource ColorShadow}" />
+    
+
+    <SolidColorBrush x:Key="BrushColor0" Color="{DynamicResource Color0}" />
+    <SolidColorBrush x:Key="BrushColor1" Color="{DynamicResource Color1}" />
+    <SolidColorBrush x:Key="BrushColor2" Color="{DynamicResource Color2}" />
+    <SolidColorBrush x:Key="BrushColor3" Color="{DynamicResource Color3}" />
+    <SolidColorBrush x:Key="BrushColor4" Color="{DynamicResource Color4}" />
+    <SolidColorBrush x:Key="BrushHighlightColor0" Color="{DynamicResource HighlightColor0}" />
+    <SolidColorBrush x:Key="BrushHighlightColor1" Color="{DynamicResource HighlightColor1}" />
+    <SolidColorBrush x:Key="BrushColorFontLight" Color="{DynamicResource ColorFontLight}" />
+    <SolidColorBrush x:Key="BrushColorFontDark" Color="{DynamicResource ColorFontDark}" />
+    <SolidColorBrush x:Key="BrushColorShadow" Color="{DynamicResource ColorShadow}" />
+
 </ResourceDictionary>
