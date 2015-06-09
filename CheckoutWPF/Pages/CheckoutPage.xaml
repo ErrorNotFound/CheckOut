@@ -273,21 +273,21 @@
                         Command="{Binding ClearCommand}"
                         Style="{DynamicResource ButtonRaisedStyle}"
                         Foreground="{DynamicResource BrushColor3}"
-                        Background="{DynamicResource BrushHighlightColor1}"
+                        Background="{DynamicResource BrushColorHighlight1}"
                         Width="180"
                         Margin="0 5 10 5"/>
                 <Button Content="{DynamicResource CheckoutPage_ButtonText1}"
                         Command="{Binding BarCommand}"
                         Style="{DynamicResource ButtonRaisedStyle}"
                         Foreground="{DynamicResource BrushColor3}"
-                        Background="{DynamicResource BrushHighlightColor0}"
+                        Background="{DynamicResource BrushColorHighlight0}"
                         Width="180"
                         Margin="0 5 10 5"/>
                 <Button Content="{DynamicResource CheckoutPage_ButtonText2}"
                         Command="{Binding NextOrderCommand}"
                         Style="{DynamicResource ButtonRaisedStyle}"
                         Foreground="{DynamicResource BrushColor3}"
-                        Background="{DynamicResource BrushHighlightColor0}"
+                        Background="{DynamicResource BrushColorHighlight0}"
                         Width="180"
                         Margin="0 5 10 5"/>
             </StackPanel>

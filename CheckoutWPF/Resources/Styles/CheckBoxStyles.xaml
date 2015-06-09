@@ -1,11 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:CheckoutWPF.Pages.UserControls"
                     xmlns:local="clr-namespace:CheckoutWPF.Resources.Styles">
 
 
     <ControlTemplate x:Key="MaterialSwitchTemplate" 
-                     TargetType="{x:Type controls:Switch}">
+                     TargetType="{x:Type CheckBox}">
         <ControlTemplate.Resources>
             <Color x:Key="ColorSwitchCheckedSlider">#009688</Color>
             <Color x:Key="ColorSwitchCheckedBar">#77C2BB</Color>
@@ -106,13 +105,9 @@
 
     </ControlTemplate>
 
-    <Style x:Key="MaterialSwitchStyle" TargetType="{x:Type controls:Switch}">
+    <Style x:Key="MaterialSwitchStyle" TargetType="{x:Type CheckBox}">
         <Setter Property="Foreground" Value="{DynamicResource BrushColorSwitchSlider}" />
         <Setter Property="Background" Value="{DynamicResource BrushColorSwitchBar}" />
         <Setter Property="Template" Value="{StaticResource MaterialSwitchTemplate}" />
-        <Setter Property="UncheckedSliderColor" Value="{DynamicResource ColorSwitchUncheckedSlider}" />
-        <Setter Property="UncheckedBarColor" Value="{DynamicResource ColorSwitchUncheckedBar}" />
-        <Setter Property="CheckedSliderColor" Value="{DynamicResource ColorSwitchCheckedSlider}" />
-        <Setter Property="CheckedBarColor" Value="{DynamicResource ColorSwitchCheckedBar}" />
     </Style>
 </ResourceDictionary>

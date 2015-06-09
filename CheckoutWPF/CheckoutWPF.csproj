@@ -150,7 +150,6 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingsPageViewModel.cs" />
-    <Compile Include="Pages\UserControls\Switch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -200,6 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\ic_restaurant_menu_black_48dp_1x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\UserControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
