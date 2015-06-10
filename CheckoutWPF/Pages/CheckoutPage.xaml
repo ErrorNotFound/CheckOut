@@ -176,17 +176,17 @@
                                 <ColumnDefinition Width="150" />
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="{Binding ProductName}" 
-                                           TextTrimming="CharacterEllipsis"
-                                           Grid.Column="0"
-                                           Style="{StaticResource OrderItemStyle}"
-                                           Margin="10 0 0 0"/>
+                            <TextBlock Text="{Binding Path=Product.Name}"
+                                       TextTrimming="CharacterEllipsis"
+                                       Grid.Column="0"
+                                       Style="{StaticResource OrderItemStyle}"
+                                       Margin="10 0 0 0"/>
                             <StackPanel Grid.Column="1"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Left"
                                             Orientation="Horizontal">
                                 <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.IncreaseProductCountCommand}"
-                                        CommandParameter="{Binding ItemID}"
+                                        CommandParameter="{Binding OrderItemID}"
                                         Style="{StaticResource AddButtonStyle}"
                                         Width="25"
                                         Height="25"
@@ -197,13 +197,13 @@
                                            TextAlignment="Center"
                                            Width="30"/>
                                 <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.DecreaseProductCountCommand}"
-                                        CommandParameter="{Binding ItemID}"
+                                        CommandParameter="{Binding OrderItemID}"
                                         Style="{StaticResource RemoveButtonStyle}"
                                         Width="25"
                                         Height="25"
                                         Margin="10 0 0 0"/>
                             </StackPanel>
-                            <TextBlock Text="{Binding SingleValue, StringFormat={}{0} €}"
+                            <TextBlock Text="{Binding Path=Product.Price, StringFormat={}{0} €}"
                                            Grid.Column="2" 
                                            Style="{StaticResource OrderItemStyle}"
                                            HorizontalAlignment="Right"/>

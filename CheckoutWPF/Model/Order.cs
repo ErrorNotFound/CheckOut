@@ -1,4 +1,5 @@
 ﻿using CheckoutWPF.Abstract;
+using CheckoutWPF.DataSource;
 using CheckoutWPF.Properties;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,7 @@ namespace CheckoutWPF.Model
             var createNewItem = Settings.Default.CreateNewOrderItemForSameProduct;
 
             // check if we have that product already
-            var item = Items.FirstOrDefault(x => x.ProductID == productId);
+            var item = Items.FirstOrDefault(x => x.Product.Id == productId);
 
             if(item != null && !createNewItem)
             {
@@ -56,14 +57,15 @@ namespace CheckoutWPF.Model
             }
             else
             {
-                item = new OrderItem(productId);
+                var product = ProductRepository.Instance.GetProductById(productId);
+                item = new OrderItem(product);
                 Items.Add(item);
             }
         }
 
         public void IncreaseOrderItemCount(Guid itemID)
         {
-            var item = Items.FirstOrDefault(x => x.ItemID == itemID);
+            var item = Items.FirstOrDefault(x => x.OrderItemID == itemID);
             if(item != null)
             {
                 AddOrRemoveItemsFromOrderItem(item, true);
@@ -72,7 +74,7 @@ namespace CheckoutWPF.Model
 
         public void RemoveProductByProductId(int id)
         {
-            var item = Items.FirstOrDefault(x => x.ProductID == id);
+            var item = Items.FirstOrDefault(x => x.Product.Id == id);
             if(item != null)
             {
                 AddOrRemoveItemsFromOrderItem(item, false);
@@ -81,7 +83,7 @@ namespace CheckoutWPF.Model
 
         public void DecreaseOrderItemCount(Guid itemID)
         {
-            var item = Items.FirstOrDefault(x => x.ItemID == itemID);
+            var item = Items.FirstOrDefault(x => x.OrderItemID == itemID);
             if (item != null)
             {
                 AddOrRemoveItemsFromOrderItem(item, false);

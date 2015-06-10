@@ -10,24 +10,26 @@ namespace CheckoutWPF.Model
 {
     public class OrderItem : AbstractModel
     {
-        public int ProductID { get; private set; }
+        public Guid OrderItemID { get; private set; }
 
-        public Guid ItemID { get; private set; }
-
-        public string ProductName
+        private Product _product;
+        public Product Product
         {
-            get
+            get { return _product; }
+            private set
             {
-                return ProductRepository.Instance.GetProductById(ProductID).Name;
+                if (_product == value)
+                    return;
+
+                _product = value;
+                OnPropertyChanged();
             }
         }
 
         private int _count;
-        public int Count {
-            get
-            {
-                return _count;
-            }
+        public int Count
+        {
+            get { return _count; }
             set
             {
                 if (value == _count)
@@ -39,42 +41,21 @@ namespace CheckoutWPF.Model
             }
         }
 
-        public decimal SingleValue
-        {
-            get
-            {
-                return ProductRepository.Instance.GetProductById(ProductID).Price;
-            }
-        }
 
         public decimal TotalValue
         {
             get
             {
-                return CalculateTotalValue();
+                return Count * Product.Price;
             }
         }
 
-        public OrderItem(int productId)
+        public OrderItem(Product product)
         {
-            ProductID = productId;
+            Product = product;
             Count = 1;
 
-            ItemID = Guid.NewGuid();
-        }
-
-        private decimal CalculateTotalValue()
-        {
-            if (Count == 0)
-                return 0;
-
-            Product product;
-            if (true == ProductRepository.Instance.TryGetProductById(ProductID, out product))
-            {
-                return Count * product.Price;
-            }
-            else
-                throw new ProductNotFoundException(ProductID);
+            OrderItemID = Guid.NewGuid();
         }
     }
 }
