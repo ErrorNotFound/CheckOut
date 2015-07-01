@@ -23,15 +23,13 @@
     </Page.Resources>
 
     <Grid>
-        <TabControl Background="{DynamicResource BrushColor3}"
-                    Style="{DynamicResource MaterialTabControlStyle}"
+        <TabControl Style="{DynamicResource MaterialTabControlStyle}"
                     ItemContainerStyle="{DynamicResource MaterialTabControlItemStyle}">
-            
             <TabControl.Items>
                 <TabItem Header="{DynamicResource MyProductsPage_TabHeader0}">
-                    <Grid Background="{DynamicResource BrushColor3}">
+                    <Grid>
                         <Grid Margin="10">
-                            <Border Background="{DynamicResource BrushColor3}">
+                            <Border>
                                 <Border.Effect>
                                     <DropShadowEffect BlurRadius="8"
                                           Color="{DynamicResource ColorShadow}"
@@ -39,7 +37,7 @@
                                           ShadowDepth="2.5"/>
                                 </Border.Effect>
                             </Border>
-                            
+
                             <DataGrid ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Products}"
                                       SelectionMode="Single"
                                       Style="{DynamicResource MaterialDataGridStyle}">
@@ -64,7 +62,7 @@
                                                           Width="100"
                                                           Style="{DynamicResource MaterialComboBoxStyle}"
                                                           ItemContainerStyle="{DynamicResource MaterialComboBoxItemStyle}"/>
-                                               
+
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
@@ -79,9 +77,9 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="{DynamicResource MyProductsPage_TabHeader1}">
-                    <Grid Background="{DynamicResource BrushColor3}">
+                    <Grid>
                         <Grid Margin="10">
-                            <Border Background="{DynamicResource BrushColor3}">
+                            <Border>
                                 <Border.Effect>
                                     <DropShadowEffect BlurRadius="8"
                                           Color="{DynamicResource ColorShadow}"
@@ -89,7 +87,7 @@
                                           ShadowDepth="2.5"/>
                                 </Border.Effect>
                             </Border>
-                            
+
                             <DataGrid ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Categories}"
                                       Style="{DynamicResource MaterialDataGridStyle}">
                                 <DataGrid.Columns>
@@ -110,6 +108,6 @@
             </TabControl.Items>
 
         </TabControl>
-        
+
     </Grid>
 </Page>

@@ -85,7 +85,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="{StaticResource MaterialDesignPaper}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -221,7 +221,7 @@
         <Grid Grid.Row="1">
             <TabControl ItemsSource="{Binding Source={x:Static data:ProductRepository.Instance}, Path=Categories}"
                         Margin="0 10 0 0"
-                        Background="{DynamicResource BrushColor3}"
+                        Foreground="{StaticResource PrimaryHueMidBrush}"
                         Style="{DynamicResource MaterialTabControlStyle}"
                         ItemContainerStyle="{DynamicResource MaterialTabControlItemStyle}">
                 <TabControl.ItemTemplate>

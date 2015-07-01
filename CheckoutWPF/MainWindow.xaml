@@ -73,7 +73,7 @@
         <BlurEffect x:Key="blurEffect" Radius="0"/>
     </Window.Resources>
 
-    <Grid Background="{DynamicResource BrushColor2}"
+    <Grid Background="{StaticResource MaterialDesignPaper}"
           ManipulationBoundaryFeedback="Grid_ManipulationBoundaryFeedback">
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -81,26 +81,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
           
-        <!-- Current Page -->
-        <Frame Grid.Row="2"
-               Content="{Binding ActivePage}"
-               NavigationUIVisibility="Hidden">
-            <Frame.Template>
-                <ControlTemplate TargetType="Frame">
-                    <ContentPresenter />
-                    <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=checkBoxMainMenu, Path=IsChecked}" Value="False">
-                            <Setter Property="Effect" Value="{x:Null}"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=checkBoxMainMenu, Path=IsChecked}" Value="True">
-                            <Setter Property="Effect" Value="{StaticResource blurEffect}"/>
-                        </DataTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Frame.Template>
-        </Frame>
-        
-        
+
         
         <!-- App Bar -->
         <Grid Name="gridAppBar" 
@@ -143,6 +124,25 @@
                        FontWeight="Bold"
                        Foreground="{StaticResource PrimaryHueDarkForegroundBrush}"/>
         </Grid>
+
+        <!-- Current Page -->
+        <Frame Grid.Row="2"
+               Content="{Binding ActivePage}"
+               NavigationUIVisibility="Hidden">
+            <Frame.Template>
+                <ControlTemplate TargetType="Frame">
+                    <ContentPresenter />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=checkBoxMainMenu, Path=IsChecked}" Value="False">
+                            <Setter Property="Effect" Value="{x:Null}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=checkBoxMainMenu, Path=IsChecked}" Value="True">
+                            <Setter Property="Effect" Value="{StaticResource blurEffect}"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Frame.Template>
+        </Frame>
 
         <!-- Touch Layer over complete screen-->
         <Grid Name="gridActivePageTouchLayer"
