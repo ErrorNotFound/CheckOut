@@ -4,5 +4,7 @@
 
     <SolidColorBrush x:Key="MaterialDesignPaper" Color="#FFfafafa"/>
     <SolidColorBrush x:Key="MaterialDesignBody" Color="#DD000000"/>
+    <Color x:Key="MaterialDesignShadow">#BBBBBB</Color>
+    <SolidColorBrush x:Key="MaterialDesignShadowBrush" Color="{StaticResource MaterialDesignShadow}"/>
 
 </ResourceDictionary>

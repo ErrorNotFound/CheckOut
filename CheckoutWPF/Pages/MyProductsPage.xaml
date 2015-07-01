@@ -32,7 +32,7 @@
                             <Border>
                                 <Border.Effect>
                                     <DropShadowEffect BlurRadius="8"
-                                          Color="{DynamicResource ColorShadow}"
+                                          Color="{StaticResource MaterialDesignShadow}"
                                           Direction="270"
                                           ShadowDepth="2.5"/>
                                 </Border.Effect>
@@ -82,7 +82,7 @@
                             <Border>
                                 <Border.Effect>
                                     <DropShadowEffect BlurRadius="8"
-                                          Color="{DynamicResource ColorShadow}"
+                                          Color="{StaticResource MaterialDesignShadow}"
                                           Direction="270"
                                           ShadowDepth="2.5"/>
                                 </Border.Effect>

@@ -7,8 +7,10 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 
-                <!-- color theme-->
+                <!-- color theme
                 <ResourceDictionary Source=".\Resources\Themes\VanillaTheme.xaml" />
+                -->
+                
 
                 <!-- light or dark theme -->
                 <ResourceDictionary Source="pack://application:,,,/CheckoutWPF;component/Resources/Themes/MaterialTheme.Light.xaml" />

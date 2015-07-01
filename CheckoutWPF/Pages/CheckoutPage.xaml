@@ -23,7 +23,7 @@
         
         <Style x:Key="OrderItemStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="Foreground" Value="{DynamicResource BrushColorFontDark}" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryHueLightForegroundBrush}" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="FontWeight" Value="Medium" />
         </Style>
@@ -59,19 +59,22 @@
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="100" />
             <Setter Property="Margin" Value="10" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryHueLightForegroundBrush}" />
+            <Setter Property="Background" Value="{StaticResource PrimaryHueLightBrush}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Border Background="{DynamicResource BrushColor2}">
+                            <Border Background="{TemplateBinding Background}">
                                 <Border.Effect>
                                     <DropShadowEffect BlurRadius="8" 
-                                                      Color="{DynamicResource ColorShadow}"
+                                                      Color="{StaticResource MaterialDesignShadow}"
                                                       Direction="270"
                                                       ShadowDepth="2.5"/>
                                 </Border.Effect>
                             </Border>
                             <TextBlock Text="{TemplateBinding Tag}"
+                                       Foreground="{TemplateBinding Foreground}"
                                        TextWrapping="Wrap"
                                        TextTrimming="CharacterEllipsis"
                                        TextAlignment="Center"
@@ -97,7 +100,7 @@
             <Border Background="{StaticResource PrimaryHueLightBrush}">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="8"
-                                      Color="{DynamicResource ColorShadow}"
+                                      Color="{StaticResource MaterialDesignShadow}"
                                       Direction="270"
                                       ShadowDepth="2.5"/>
                 </Border.Effect>
@@ -108,7 +111,7 @@
                     <ControlTemplate TargetType="ItemsControl">
                         <DockPanel>
                             <Border BorderThickness="0 0 0 1"
-                                    BorderBrush="{DynamicResource BrushColor2}"
+                                    BorderBrush="{StaticResource MaterialDesignBody}"
                                     Height="60" 
                                     DockPanel.Dock="Top">
                                 <Grid>
@@ -141,7 +144,7 @@
                                 </Grid>
                             </Border>
                             <Border BorderThickness="0 1 0 0"
-                                    BorderBrush="{DynamicResource BrushColor2}"
+                                    BorderBrush="Green"
                                     Height="60" 
                                     DockPanel.Dock="Bottom">
                                 <StackPanel Orientation="Horizontal"
@@ -231,7 +234,7 @@
                 </TabControl.ItemTemplate>
                 <TabControl.ContentTemplate>
                     <DataTemplate>
-                        <ItemsControl Background="{DynamicResource BrushColor3}">
+                        <ItemsControl Background="{StaticResource MaterialDesignPaper}">
                             <ItemsControl.ItemsSource>
                                 <MultiBinding Converter="{StaticResource observableListToFilteredListConverter}" Mode="OneWay">
                                     <Binding Source="{x:Static data:ProductRepository.Instance}" Path="Products" />
@@ -265,22 +268,22 @@
                 <Button Content="{DynamicResource CheckoutPage_ButtonText0}"
                         Command="{Binding ClearCommand}"
                         Style="{DynamicResource ButtonRaisedStyle}"
-                        Foreground="{DynamicResource BrushColor3}"
-                        Background="{DynamicResource BrushColorHighlight1}"
+                        Foreground="{StaticResource SecondaryAccentForegroundBrush}"
+                        Background="{StaticResource SecondaryAccentBrush}"
                         Width="180"
                         Margin="0 5 10 5"/>
                 <Button Content="{DynamicResource CheckoutPage_ButtonText1}"
                         Command="{Binding BarCommand}"
                         Style="{DynamicResource ButtonRaisedStyle}"
-                        Foreground="{DynamicResource BrushColor3}"
-                        Background="{DynamicResource BrushColorHighlight0}"
+                        Foreground="{StaticResource SecondaryAccentForegroundBrush}"
+                        Background="{StaticResource SecondaryAccentBrush}"
                         Width="180"
                         Margin="0 5 10 5"/>
                 <Button Content="{DynamicResource CheckoutPage_ButtonText2}"
                         Command="{Binding NextOrderCommand}"
                         Style="{DynamicResource ButtonRaisedStyle}"
-                        Foreground="{DynamicResource BrushColor3}"
-                        Background="{DynamicResource BrushColorHighlight0}"
+                        Foreground="{StaticResource SecondaryAccentForegroundBrush}"
+                        Background="{StaticResource SecondaryAccentBrush}"
                         Width="180"
                         Margin="0 5 10 5"/>
             </StackPanel>

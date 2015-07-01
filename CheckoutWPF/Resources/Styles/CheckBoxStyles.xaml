@@ -79,7 +79,7 @@
                     </Ellipse.RenderTransform>
                     <Ellipse.Effect>
                         <DropShadowEffect BlurRadius="4"
-                                          Color="{DynamicResource ColorShadow}"
+                                          Color="{StaticResource MaterialDesignShadow}"
                                           Direction="270"
                                           ShadowDepth="0.5"/>
                     </Ellipse.Effect>
