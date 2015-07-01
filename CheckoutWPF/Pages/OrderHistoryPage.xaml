@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="718" 
       d:DesignWidth="1024"
-      Title="OrderHistoryPage">
+      Title="Order History">
     
     <Page.DataContext>
         <local:OrderHistoryPageViewModel />

@@ -9,7 +9,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="718" 
       d:DesignWidth="1024"
-      Title="MyProductsPage">
+      Title="My Products">
     
     <Page.DataContext>
         <local:MyProductsPageViewModel />

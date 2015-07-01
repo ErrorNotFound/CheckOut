@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckoutWPF.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,40 @@ using System.Threading.Tasks;
 
 namespace CheckoutWPF.Model
 {
-    public class Category
+    public class Category : AbstractModel
     {
-        public string Name { get; set; }
-        public int Id { get; set; }
+        private string _name;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (value == _name)
+                    return;
+
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _id;
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (value == _id)
+                    return;
+
+                _id = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }

@@ -6,8 +6,43 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                
+                <!-- color theme-->
                 <ResourceDictionary Source=".\Resources\Themes\VanillaTheme.xaml" />
+
+                <!-- light or dark theme -->
+                <ResourceDictionary Source="pack://application:,,,/CheckoutWPF;component/Resources/Themes/MaterialTheme.Light.xaml" />
+                
+                <ResourceDictionary>                 
+                    <ResourceDictionary.MergedDictionaries>
+                        <!-- primary palette -->
+                        <ResourceDictionary Source="pack://application:,,,/CheckoutWPF;component/Resources/Themes/MaterialColorPalette/MaterialColor.Indigo.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+
+                    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="{StaticResource Primary100}"/>
+                    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="{StaticResource Primary100Foreground}"/>
+                    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="{StaticResource Primary500}"/>
+                    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="{StaticResource Primary500Foreground}"/>
+                    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="{StaticResource Primary700}"/>
+                    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="{StaticResource Primary700Foreground}"/>
+                </ResourceDictionary>
+                    
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <!-- secondary colour -->
+                        <ResourceDictionary Source="pack://application:,,,/CheckoutWPF;component/Resources/Themes/MaterialColorPalette/MaterialColor.Lime.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+
+                    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="{StaticResource Accent700}"/>
+                    <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="{StaticResource Accent700Foreground}"/>
+                </ResourceDictionary>
+                    
+                
+                
+                <!-- language files -->
                 <ResourceDictionary Source=".\Resources\Languages\Lang_English.xaml" />
+                
+                <!-- styles -->
                 <ResourceDictionary Source=".\Resources\Styles\ScrollViewerStyles.xaml" />
                 <ResourceDictionary Source=".\Resources\Styles\ButtonStyles.xaml" />
                 <ResourceDictionary Source=".\Resources\Styles\CheckBoxStyles.xaml" />

@@ -9,5 +9,6 @@ namespace CheckoutWPF.Pages
 {
     public class OrderHistoryPageViewModel : AbstractModel
     {
+
     }
 }

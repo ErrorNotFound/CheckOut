@@ -21,7 +21,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="CheckBox">
-                        <Image Source="Resources/Icons/ic_menu_black_48dp_1x.png"
+                        <Image Source="Resources/Icons/ic_menu_white_48dp_1x.png"
                                Stretch="UniformToFill"/>
                     </ControlTemplate>
                 </Setter.Value>
@@ -30,13 +30,13 @@
         <Style x:Key="MenuItemButtonStyle"
                TargetType="Button">
             <EventSetter Event="Click" Handler="CloseMenu" />
-            <Setter Property="Background" Value="{DynamicResource BrushColor2}" />
             <Setter Property="Command" Value="{Binding ChangePageCommand}" />
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid Name="gridMain" 
-                              Height="60" 
+                              Height="60"
                               Background="{TemplateBinding Background}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="70" />
@@ -59,7 +59,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{DynamicResource BrushColor3}" />
+                    <Setter Property="Background" Value="{StaticResource SecondaryAccentBrush}" />
                 </Trigger>
             </Style.Triggers>        
         </Style>
@@ -76,12 +76,13 @@
     <Grid Background="{DynamicResource BrushColor2}"
           ManipulationBoundaryFeedback="Grid_ManipulationBoundaryFeedback">
         <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
           
         <!-- Current Page -->
-        <Frame Grid.Row="1"
+        <Frame Grid.Row="2"
                Content="{Binding ActivePage}"
                NavigationUIVisibility="Hidden">
             <Frame.Template>
@@ -99,36 +100,54 @@
             </Frame.Template>
         </Frame>
         
-        <!-- Header -->
-        <Grid Name="gridHeader" 
-              Grid.Row="0">
+        
+        
+        <!-- App Bar -->
+        <Grid Name="gridAppBar" 
+              Grid.Row="1">
+            <Border Background="{StaticResource PrimaryHueMidBrush}">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="8" 
+                                      Color="{DynamicResource ColorShadow}"
+                                      Direction="270"
+                                      ShadowDepth="1"/>
+                </Border.Effect>
+            </Border>
             <CheckBox Name="checkBoxMainMenu"
                       Style="{StaticResource MenuCheckboxStyle}"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Left"
-                      Height="40"
-                      Width="40"
-                      Margin="10 0 0 0" />
+                      Height="25"
+                      Width="25"
+                      Margin="10 2 0 0" />
 
-            <TextBlock Text="{DynamicResource MainWindow_ApplicationName}"
-                       HorizontalAlignment="Center"
+            <TextBlock Text="{Binding ActivePage.Title}"
+                       HorizontalAlignment="Left"
                        VerticalAlignment="Center"
-                       Foreground="{DynamicResource BrushColorFontDark}"
-                       FontSize="22"
-                       FontWeight="Bold"/>
-            <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now},StringFormat='HH:mm:ss tt'}"
+                       Foreground="{StaticResource PrimaryHueDarkForegroundBrush}"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Margin="50 0 0 0"/>
+        </Grid>
+
+        <!-- Status Bar-->
+        <Grid Name="gridStatusBar"
+              Grid.Row="0"
+              Background="{StaticResource PrimaryHueDarkBrush}">
+
+            <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now},StringFormat='HH:mm:ss'}"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
-                       Margin="0 0 20 0"
-                       FontSize="22"
+                       Margin="0 0 10 0"
+                       FontSize="13"
                        FontWeight="Bold"
-                       Foreground="{DynamicResource BrushColorFontDark}"/>
+                       Foreground="{StaticResource PrimaryHueDarkForegroundBrush}"/>
         </Grid>
 
         <!-- Touch Layer over complete screen-->
         <Grid Name="gridActivePageTouchLayer"
               Grid.Row="0"
-              Grid.RowSpan="2"
+              Grid.RowSpan="3"
               Background="Transparent"
               IsHitTestVisible="{Binding ElementName=checkBoxMainMenu, Path=IsChecked}"
               PreviewMouseDown="gridActivePageTouchLayer_MouseLeftButtonDown"
@@ -136,13 +155,13 @@
         </Grid>
         
         <!-- Menu -->
-        <Grid Grid.Row="1"
+        <Grid Grid.Row="2"
                 Width="200"
                 Height="Auto"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
                 Visibility="{Binding ElementName=checkBoxMainMenu, Path=IsChecked, Converter={StaticResource booleanToVisibilityConverter}}">
-            <Border Background="{DynamicResource BrushColor2}">
+            <Border Background="{StaticResource PrimaryHueLightBrush}">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="8" 
                                       Color="{DynamicResource ColorShadow}"

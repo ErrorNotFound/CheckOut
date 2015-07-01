@@ -47,8 +47,8 @@ namespace CheckoutWPF
         public MainWindowViewModel()
         {
             // Display first page
-            //ActivePage = new CheckoutPage();
-            ActivePage = new MyProductsPage();
+            ActivePage = new CheckoutPage();
+            //ActivePage = new MyProductsPage();
         }
 
         private void ChangePage(Type typeOfPage)

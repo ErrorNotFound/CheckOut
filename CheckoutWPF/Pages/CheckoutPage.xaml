@@ -12,7 +12,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="718" 
       d:DesignWidth="1024"
-      Title="CheckoutPage">
+      Title="Checkout">
     <Page.DataContext>
         <local:CheckoutPageViewModel />
     </Page.DataContext>
@@ -85,7 +85,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="{DynamicResource BrushColor2}">
+    <Grid Background="{StaticResource MaterialDesignPaper}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -94,7 +94,7 @@
         
         <Grid Grid.Row="0"
               Margin="10">
-            <Border Background="{DynamicResource BrushColor3}">
+            <Border Background="{StaticResource PrimaryHueLightBrush}">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="8"
                                       Color="{DynamicResource ColorShadow}"
@@ -151,11 +151,11 @@
                                     <TextBlock Text="{DynamicResource CheckoutPage_CurrentOrder_Total}"
                                                FontSize="30"
                                                FontWeight="Bold"
-                                               Foreground="{DynamicResource BrushColorFontDark}"/>
+                                               Foreground="{StaticResource PrimaryHueLightForegroundBrush}"/>
                                     <TextBlock Text="{Binding CurrentOrder.TotalValue, StringFormat=: {0} €}"
                                                FontSize="30"
                                                FontWeight="Bold"
-                                               Foreground="{DynamicResource BrushColorFontDark}"/>
+                                               Foreground="{StaticResource PrimaryHueLightForegroundBrush}"/>
                                 </StackPanel>
                             </Border>
                             <ScrollViewer x:Name="ScrollViewerCurrentOrder"
@@ -258,15 +258,8 @@
             </TabControl>            
         </Grid>
 
-        <Grid Grid.Row="2">
-            <Border Background="{DynamicResource BrushColor2}">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="8"
-                                      Color="{DynamicResource ColorShadow}"
-                                      Direction="90"
-                                      ShadowDepth="2.5"/>
-                </Border.Effect>
-            </Border>
+        <Grid Grid.Row="2"
+              Background="{StaticResource PrimaryHueMidBrush}">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">
                 <Button Content="{DynamicResource CheckoutPage_ButtonText0}"
