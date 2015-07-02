@@ -16,6 +16,7 @@
         <local:MainWindowViewModel />
     </Window.DataContext>
     <Window.Resources>
+        <converter:ActivePageToMenuItemForegroundBrushConverter x:Key="activePageToMenuItemForegroundBrushConverter" />
         <Style x:Key="MenuCheckboxStyle"
                TargetType="CheckBox">
             <Setter Property="Template">
@@ -32,6 +33,7 @@
             <EventSetter Event="Click" Handler="CloseMenu" />
             <Setter Property="Command" Value="{Binding ChangePageCommand}" />
             <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -51,6 +53,7 @@
                             <TextBlock Text="{TemplateBinding Tag}"
                                        FontWeight="Medium"
                                        FontSize="12"
+                                       Foreground="{TemplateBinding Foreground}"
                                        VerticalAlignment="Center"
                                        Grid.Column="1"/>
                         </Grid>
@@ -156,34 +159,40 @@
         
         <!-- Menu -->
         <Grid Grid.Row="2"
-                Width="200"
-                Height="Auto"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Visibility="{Binding ElementName=checkBoxMainMenu, Path=IsChecked, Converter={StaticResource booleanToVisibilityConverter}}">
-            <Border Background="{StaticResource PrimaryHueLightBrush}">
+              Width="200"
+              VerticalAlignment="Stretch"
+              HorizontalAlignment="Left"
+              Visibility="{Binding ElementName=checkBoxMainMenu, Path=IsChecked, Converter={StaticResource booleanToVisibilityConverter}}">
+            <Border Background="{StaticResource MaterialDesignPaper}"
+                    BorderThickness="0 0 1 0"
+                    BorderBrush="{StaticResource MaterialDesignShadowBrush}">
+                <!--
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="8" 
                                       Color="{StaticResource MaterialDesignShadow}"
                                       Direction="270"
                                       ShadowDepth="1"/>
                 </Border.Effect>
+                -->
             </Border>
             <StackPanel>
                 <Button Tag="{DynamicResource MainWindow_Menu_Item0}"
                         Style="{StaticResource MenuItemButtonStyle}"
+                        Foreground="{Binding ActivePage, Converter={StaticResource activePageToMenuItemForegroundBrushConverter}, ConverterParameter={x:Type pages:CheckoutPage}}"
                         CommandParameter="{x:Type pages:CheckoutPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_store_black_48dp_1x.png"
                            Stretch="Uniform"/>
                 </Button>
                 <Button Tag="{DynamicResource MainWindow_Menu_Item1}"
                         Style="{StaticResource MenuItemButtonStyle}"
+                        Foreground="{Binding ActivePage, Converter={StaticResource activePageToMenuItemForegroundBrushConverter}, ConverterParameter={x:Type pages:MyProductsPage}}"
                         CommandParameter="{x:Type pages:MyProductsPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_restaurant_menu_black_48dp_1x.png"
                            Stretch="Uniform"/>
                 </Button>
                 <Button Tag="{DynamicResource MainWindow_Menu_Item2}"
                         Style="{StaticResource MenuItemButtonStyle}"
+                        Foreground="{Binding ActivePage, Converter={StaticResource activePageToMenuItemForegroundBrushConverter}, ConverterParameter={x:Type pages:OrderHistoryPage}}"
                         CommandParameter="{x:Type pages:OrderHistoryPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_storage_black_48dp_1x.png"
                            Stretch="Uniform"/>
@@ -191,6 +200,7 @@
                 <Separator Style="{StaticResource MenuItemSeparatorStyle}" />
                 <Button Tag="{DynamicResource MainWindow_Menu_Item3}"
                         Style="{StaticResource MenuItemButtonStyle}"
+                        Foreground="{Binding ActivePage, Converter={StaticResource activePageToMenuItemForegroundBrushConverter}, ConverterParameter={x:Type pages:SettingsPage}}"
                         CommandParameter="{x:Type pages:SettingsPage}">
                     <Image Source="/CheckoutWPF;component/Resources/Icons/ic_settings_black_48dp_1x.png"
                            Stretch="Uniform"/>
