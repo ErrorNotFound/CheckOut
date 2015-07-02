@@ -2,60 +2,52 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:CheckoutWPF.Resources.Icons">
 
-    <Path x:Key="pathAdd"
-          Fill="{StaticResource MaterialDesignIconDark}"
-          Stretch="Uniform"
-          Data="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-          HorizontalAlignment="Center" 
-          VerticalAlignment="Center"
-          SnapsToDevicePixels="True" />
+    <Style x:Key="IconStyleBase"
+           TargetType="{x:Type Path}">
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
 
-    <Path x:Key="pathRemove"
-          Fill="{StaticResource MaterialDesignIconDark}"
-          Stretch="Uniform"
-          Data="M19 13H5v-2h14v2z"
-          HorizontalAlignment="Center" 
-          VerticalAlignment="Center"
-          SnapsToDevicePixels="True" />
+    <Style x:Key="IconStyleLight"
+           TargetType="{x:Type Path}"
+           BasedOn="{StaticResource IconStyleBase}">
+        <Setter Property="Fill" Value="{StaticResource MaterialDesignIconLight}" />
+    </Style>
 
-    <Path x:Key="pathMenu"
-          Fill="{StaticResource MaterialDesignIconDark}"
-          Stretch="Uniform"
-          Data="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-          HorizontalAlignment="Center" 
-          VerticalAlignment="Center"
-          SnapsToDevicePixels="True" />
+    <Style x:Key="IconStyleDark"
+           TargetType="{x:Type Path}"
+           BasedOn="{StaticResource IconStyleBase}">
+        <Setter Property="Fill" Value="{StaticResource MaterialDesignIconDark}" />
+    </Style>
 
-    <Path x:Key="pathRestaurant"
-          Fill="{StaticResource MaterialDesignIconDark}"
-          Stretch="Uniform"
-          Data="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"
-          HorizontalAlignment="Center" 
-          VerticalAlignment="Center"
-          SnapsToDevicePixels="True" />
+    <Geometry x:Key="geometryAdd">
+        M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z
+    </Geometry>
 
-    <Path x:Key="pathSettings"
-          Fill="{StaticResource MaterialDesignIconDark}"
-          Stretch="Uniform"
-          Data="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"
-          HorizontalAlignment="Center" 
-          VerticalAlignment="Center"
-          SnapsToDevicePixels="True"/>
+    <Geometry x:Key="geometryRemove">
+        M19 13H5v-2h14v2z
+    </Geometry>
 
-    <Path x:Key="pathStorage"
-          Fill="{StaticResource MaterialDesignIconDark}"
-          Stretch="Uniform"
-          Data="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z"
-          HorizontalAlignment="Center" 
-          VerticalAlignment="Center"
-          SnapsToDevicePixels="True" />
+    <Geometry x:Key="geometryMenu">
+        M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z
+    </Geometry>
 
-    <Path x:Key="pathStore"
-          Fill="{StaticResource MaterialDesignIconDark}"
-          Stretch="Uniform"
-          Data="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"
-          HorizontalAlignment="Center" 
-          VerticalAlignment="Center"
-          SnapsToDevicePixels="True" />
+    <Geometry x:Key="geometryRestaurant">
+        M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z
+    </Geometry>
+    
+    <Geometry x:Key="geometrySettings">
+        M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z
+    </Geometry>
+    
+    <Geometry x:Key="geometryStorage">
+        M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z
+    </Geometry>
+    
+    <Geometry x:Key="geometryStore">
+        M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z
+    </Geometry>
 
 </ResourceDictionary>

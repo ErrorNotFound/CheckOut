@@ -23,7 +23,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="CheckBox">
                         <Grid Background="Transparent">
-                            <ContentPresenter Content="{StaticResource pathMenu}" />
+                            <Path Data="{StaticResource geometryMenu}"
+                                  Style="{StaticResource IconStyleLight}" />
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -180,25 +181,37 @@
                 <Button Tag="{DynamicResource MainWindow_Menu_Item0}"
                         Style="{StaticResource MenuItemButtonStyle}"
                         Foreground="{Binding ActivePage, Converter={StaticResource activePageToMenuItemForegroundBrushConverter}, ConverterParameter={x:Type pages:CheckoutPage}}"
-                        CommandParameter="{x:Type pages:CheckoutPage}"
-                        Content="{StaticResource pathStore}" />
+                        CommandParameter="{x:Type pages:CheckoutPage}">
+                    <Path Data="{StaticResource geometryStore}"
+                          Style="{StaticResource IconStyleBase}"
+                          Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
+                </Button>
                 <Button Tag="{DynamicResource MainWindow_Menu_Item1}"
                         Style="{StaticResource MenuItemButtonStyle}"
                         Foreground="{Binding ActivePage, Converter={StaticResource activePageToMenuItemForegroundBrushConverter}, ConverterParameter={x:Type pages:MyProductsPage}}"
-                        CommandParameter="{x:Type pages:MyProductsPage}"
-                        Content="{StaticResource pathRestaurant}"/>
+                        CommandParameter="{x:Type pages:MyProductsPage}">
+                    <Path Data="{StaticResource geometryRestaurant}"
+                          Style="{StaticResource IconStyleBase}"
+                          Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
+                </Button>
                 <Button Tag="{DynamicResource MainWindow_Menu_Item2}"
                         Style="{StaticResource MenuItemButtonStyle}"
                         Foreground="{Binding ActivePage, Converter={StaticResource activePageToMenuItemForegroundBrushConverter}, ConverterParameter={x:Type pages:OrderHistoryPage}}"
-                        CommandParameter="{x:Type pages:OrderHistoryPage}"
-                        Content="{StaticResource pathStorage}" />
+                        CommandParameter="{x:Type pages:OrderHistoryPage}">
+                    <Path Data="{StaticResource geometryStorage}"
+                          Style="{StaticResource IconStyleBase}"
+                          Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
+                </Button>
 
                 <Separator Style="{StaticResource MenuItemSeparatorStyle}" />
                 <Button Tag="{DynamicResource MainWindow_Menu_Item3}"
                         Style="{StaticResource MenuItemButtonStyle}"
                         Foreground="{Binding ActivePage, Converter={StaticResource activePageToMenuItemForegroundBrushConverter}, ConverterParameter={x:Type pages:SettingsPage}}"
-                        CommandParameter="{x:Type pages:SettingsPage}"
-                        Content="{StaticResource pathSettings}" />
+                        CommandParameter="{x:Type pages:SettingsPage}">
+                    <Path Data="{StaticResource geometrySettings}"
+                          Style="{StaticResource IconStyleBase}"
+                          Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>
