@@ -1,6 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:CheckoutWPF.Resources.Themes">
-  <SolidColorBrush x:Key="MaterialDesignIconLight" Color="White"/>
-  <SolidColorBrush x:Key="MaterialDesignIconDark" Color="Black"/>
+    
+    <SolidColorBrush x:Key="MaterialDesignIconLight" Color="White"/>
+    <SolidColorBrush x:Key="MaterialDesignIconDark" Color="Black"/>
+
+    <Color x:Key="MaterialDesignShadow">#BBBBBB</Color>
+    <SolidColorBrush x:Key="MaterialDesignShadowBrush" Color="{StaticResource MaterialDesignShadow}"/>
+
 </ResourceDictionary>

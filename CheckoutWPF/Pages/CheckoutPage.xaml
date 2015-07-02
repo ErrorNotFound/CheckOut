@@ -38,8 +38,10 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Image Source="/CheckoutWPF;component/Resources/Icons/ic_add_black_48dp_1x.png"
-                               Stretch="Uniform"/>
+                        <Grid Background="Transparent">
+                            <Path Data="{StaticResource geometryAdd}"
+                                  Style="{StaticResource IconStyleDark}" />
+                        </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -48,8 +50,10 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Image Source="/CheckoutWPF;component/Resources/Icons/ic_remove_black_48dp_1x.png"
-                               Stretch="Uniform"/>
+                        <Grid Background="Transparent">
+                            <Path Data="{StaticResource geometryRemove}"
+                                  Style="{StaticResource IconStyleDark}" />
+                        </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -110,7 +114,7 @@
                 <ItemsControl.Template>
                     <ControlTemplate TargetType="ItemsControl">
                         <DockPanel>
-                            <Border BorderThickness="0 0 0 1"
+                            <Border BorderThickness="0"
                                     BorderBrush="{StaticResource MaterialDesignBody}"
                                     Height="60" 
                                     DockPanel.Dock="Top">
@@ -143,8 +147,8 @@
                                            Margin="10 0 0 0"/>
                                 </Grid>
                             </Border>
-                            <Border BorderThickness="0 1 0 0"
-                                    BorderBrush="Green"
+                            <Border BorderThickness="0 0 0 0"
+                                    BorderBrush="{StaticResource MaterialDesignShadowBrush}"
                                     Height="60" 
                                     DockPanel.Dock="Bottom">
                                 <StackPanel Orientation="Horizontal"
@@ -191,8 +195,8 @@
                                 <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.IncreaseProductCountCommand}"
                                         CommandParameter="{Binding OrderItemID}"
                                         Style="{StaticResource AddButtonStyle}"
-                                        Width="25"
-                                        Height="25"
+                                        Width="15"
+                                        Height="15"
                                         Margin="0 0 10 0"/>
                                 <TextBlock Text="{Binding Count, StringFormat={}{0} x}"  
                                            Style="{StaticResource OrderItemStyle}"
@@ -202,8 +206,8 @@
                                 <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.DecreaseProductCountCommand}"
                                         CommandParameter="{Binding OrderItemID}"
                                         Style="{StaticResource RemoveButtonStyle}"
-                                        Width="25"
-                                        Height="25"
+                                        Width="15"
+                                        Height="15"
                                         Margin="10 0 0 0"/>
                             </StackPanel>
                             <TextBlock Text="{Binding Path=Product.Price, StringFormat={}{0} €}"
