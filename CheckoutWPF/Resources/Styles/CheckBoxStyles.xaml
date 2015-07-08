@@ -88,7 +88,7 @@
 
             <ContentPresenter Grid.Column="1"
                               VerticalAlignment="Center"
-                              TextBlock.Foreground="{DynamicResource BrushColorFontDark}"
+                              TextBlock.Foreground="Black"
                               />
         </Grid>
 

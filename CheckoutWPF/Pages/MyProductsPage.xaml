@@ -17,6 +17,7 @@
     
     <Page.Resources>
         <converter:StringToUppercaseStringConverter x:Key="stringToUppercaseStringConverter" />
+        <converter:CategoryIdToCountConverter x:Key="categoryIdToCountConverter" />
         <Style x:Key="TableItemStyle" TargetType="TextBlock">
             
         </Style>
@@ -98,6 +99,10 @@
                                                         Width="*"/>
                                     <DataGridTextColumn Header="{DynamicResource MyProductsPage_Tab1_Column1}" 
                                                         Binding="{Binding Id}"
+                                                        Width="200"
+                                                        />
+                                    <DataGridTextColumn Header="{DynamicResource MyProductsPage_Tab1_Column2}" 
+                                                        Binding="{Binding Id, Converter={StaticResource categoryIdToCountConverter}}"
                                                         Width="200"
                                                         />
                                 </DataGrid.Columns>

@@ -25,5 +25,6 @@
     <sys:String x:Key="MyProductsPage_Tab0_Column2">Price</sys:String>
     <sys:String x:Key="MyProductsPage_Tab1_Column0">Name</sys:String>
     <sys:String x:Key="MyProductsPage_Tab1_Column1">Id</sys:String>
+    <sys:String x:Key="MyProductsPage_Tab1_Column2">Count</sys:String>
 
 </ResourceDictionary>

@@ -8,4 +8,7 @@
     <Color x:Key="MaterialDesignShadow">#BBBBBB</Color>
     <SolidColorBrush x:Key="MaterialDesignShadowBrush" Color="{StaticResource MaterialDesignShadow}"/>
 
+    <SolidColorBrush x:Key="MaterialDesignFontBlack" Color="Black"/>
+    <SolidColorBrush x:Key="MaterialDesignFontGray" Color="Gray"/>
+
 </ResourceDictionary>

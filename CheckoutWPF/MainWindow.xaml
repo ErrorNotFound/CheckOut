@@ -85,9 +85,7 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-          
-
-        
+                 
         <!-- App Bar -->
         <Grid Name="gridAppBar" 
               Grid.Row="1">
@@ -148,6 +146,13 @@
                 </ControlTemplate>
             </Frame.Template>
         </Frame>
+        
+        <!-- Fog over Current Page -->
+        <Grid Grid.Row="2"
+              Background="Gray"
+              Opacity="0.8"
+              Visibility="{Binding ElementName=checkBoxMainMenu, Path=IsChecked, Converter={StaticResource booleanToVisibilityConverter}}"
+              />
 
         <!-- Touch Layer over complete screen-->
         <Grid Name="gridActivePageTouchLayer"

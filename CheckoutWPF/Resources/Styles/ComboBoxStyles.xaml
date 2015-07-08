@@ -44,16 +44,17 @@
 
     <Style x:Key="MaterialComboBoxStyle" TargetType="ComboBox">
         <Setter Property="Background" Value="LightGray" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Height" Value="48" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Foreground" Value="{StaticResource MaterialDesignFontBlack}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="YellowGreen" />
         <Setter Property="ClipToBounds" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
-                    <Grid Name="gridMain">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid Name="gridMainTest" Background="Green">
                         <ToggleButton x:Name="ToggleButton"
                                       Template="{StaticResource MaterialComboBoxToggleButton}"
                                       Grid.Column="2"
@@ -79,7 +80,8 @@
                                  Visibility="Hidden"
                                  IsReadOnly="{TemplateBinding IsReadOnly}" />
                         <Popup x:Name="Popup"
-                               Placement="Bottom"
+                               Placement="Relative"
+                               PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                IsOpen="{TemplateBinding IsDropDownOpen}"
                                AllowsTransparency="True"
                                Focusable="False"
@@ -89,14 +91,18 @@
                                   MinWidth="{TemplateBinding ActualWidth}"
                                   MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                   Background="{TemplateBinding Background}">
+                                
                                 <Border x:Name="DropDownBorder">
+                                        <!--
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="8"
                                                           Color="{StaticResource MaterialDesignShadow}"
                                                           Direction="270"
                                                           ShadowDepth="2.5"/>
                                     </Border.Effect>
+                                    -->
                                 </Border>
+                                
                                 <ScrollViewer Margin="0"
                                               SnapsToDevicePixels="True">
                                     <StackPanel IsItemsHost="True"
@@ -105,7 +111,8 @@
                             </Grid>
                         </Popup>
                     </Grid>
-                    
+                    </Border>
+
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasItems"
                                  Value="false">
@@ -122,14 +129,11 @@
                                  Property="AllowsTransparency"
                                  Value="true">
                             <Setter TargetName="DropDownBorder"
-                                    Property="CornerRadius"
-                                    Value="4" />
-                            <Setter TargetName="DropDownBorder"
                                     Property="Margin"
                                     Value="0,2,0,0" />
                         </Trigger>
                         <Trigger Property="IsDropDownOpen" Value="True">
-                            <Setter TargetName="gridMain" Property="Background" Value="LightGray" />
+                            <Setter TargetName="gridMainTest" Property="Background" Value="LightGray" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

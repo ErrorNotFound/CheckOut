@@ -68,6 +68,7 @@
     <Compile Include="DataSource\ProductRepository.cs" />
     <Compile Include="Pages\Converter\ActivePageToMenuItemForegroundBrushConverter.cs" />
     <Compile Include="Pages\Converter\CategoryIdToCategoryNameConverter.cs" />
+    <Compile Include="Pages\Converter\CategoryIdToCountConverter.cs" />
     <Compile Include="Pages\Converter\ColorToShadowColorConverter.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
